@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+
+    background-color: aqua;
+}
+
+div#principal {
+    width: 80%;
+    height: 90%;
+    background-color: blanchedalmond;
+}
+
+#upper {
+    height: 50%;
+    display: flex;
+    width: 100%;
+}
+
+.cima {
+    width: 50%;
+    background-color: cadetblue;
+}
+
+#info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#dados {
+    background-color: red;
+    width: 70%;
+    height: 70%;
+}
+
+#lower {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+}
+
+#apresentacao {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    background-color: crimson;
+}
+
+.salvo {
+    height: 100px;
+    width: 100px;
+    background-color: blueviolet;
+    margin: 5px;
+}
