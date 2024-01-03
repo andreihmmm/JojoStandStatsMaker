@@ -14,9 +14,10 @@ body {
 
 .header-aberta {
     background-color: aqua;
-    min-height: 100%;
+    max-height: 100%;
     width: 20%;
     display: flex;
+    overflow-y: auto;
 }
 
 .header-fechada {
@@ -33,40 +34,40 @@ li.salvo {
     min-width: 100%;
     min-height: 15vh;
     height: auto;
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     margin-bottom: 5px;
     transition: 0.3s ease-in-out;
-}
-
-.salvo:hover {
-    min-height: 30vh;
 }
 
 a {
     display: flex;
     background-color: aliceblue;
-    height: 100%;
-    width: 100%;
-}
-
-a:hover {
-    opacity: 0;
+    position: relative;
+    top: 90px;
 }
 
 a p {
+    background-color: darkorange;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
     width: 100%;
+    height: 100%;
 }
 
 .img-salvos {
     max-width: 100%;
     max-height: 100%;
-    z-index: -1;
+    opacity: 0;
+    transition: 0.3s;
+    z-index: 1;
+    position: relative;
+}
+
+.img-salvos:hover {
+    opacity: 1;
 }
 
 div#main {
@@ -113,7 +114,8 @@ section#esquerda {
 }
 
 img#chart {
-    max-height: 70%;
+    max-width: 70%;
+    max-height: 80%;
 }
 
 img#input {
