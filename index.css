@@ -5,62 +5,133 @@
 }
 
 body {
-    display: flex;
     width: 100vw;
     height: 100vh;
+    display: flex;
     align-items: center;
     justify-content: center;
+}
 
+.header-aberta {
     background-color: aqua;
-}
-
-div#principal {
-    width: 80%;
-    height: 90%;
-    background-color: blanchedalmond;
-}
-
-#upper {
-    height: 50%;
+    min-height: 100%;
+    width: 20%;
     display: flex;
+}
+
+.header-fechada {
+    display: none;
+}
+
+ul {
+    background-color: pink;
     width: 100%;
 }
 
-.cima {
-    width: 50%;
-    background-color: cadetblue;
-}
-
-#info {
+li.salvo {
+    background-color: cornflowerblue;
+    min-width: 100%;
+    min-height: 15vh;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 5px;
+    transition: 0.3s ease-in-out;
 }
 
-#dados {
-    background-color: red;
-    width: 70%;
-    height: 70%;
+.salvo:hover {
+    min-height: 30vh;
 }
 
-#lower {
+a {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: aliceblue;
+    height: 100%;
     width: 100%;
-    height: 50%;
 }
 
-#apresentacao {
-    width: 90%;
-    height: 90%;
+a:hover {
+    opacity: 0;
+}
+
+a p {
     display: flex;
-    background-color: crimson;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
 }
 
-.salvo {
-    height: 100px;
-    width: 100px;
-    background-color: blueviolet;
-    margin: 5px;
+.img-salvos {
+    max-width: 100%;
+    max-height: 100%;
+    z-index: -1;
+}
+
+div#main {
+    background-color: brown;
+    width: 100%;
+    height: 80%;
+    display: flex;
+
+}
+
+section#esquerda {
+    background-color: darkcyan;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-width: 70%;
+}
+
+.bola {
+    background-color: darkgoldenrod;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+
+.bola:hover {
+    cursor: pointer;
+}
+
+.botao-salvos {
+    height: 100%;
+    background-color: purple;
+    display: flex;
+    align-items: center;
+}
+
+#imagens {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-width: 70%;
+}
+
+img#chart {
+    max-height: 70%;
+}
+
+img#input {
+    max-width: 30%;
+}
+
+.direita-aberta {
+    display: grid;
+    align-items: normal;
+}
+
+.direita-fechada {
+    display: none;
+}
+
+.textos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
