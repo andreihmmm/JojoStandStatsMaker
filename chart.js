@@ -1,5 +1,7 @@
 function verInputs() {
 
+    const notas = ['F', 'E', 'D', 'C', 'B', 'A', 'S'];
+
     const rangex = [297, 322, 344, 369, 393, 416, 438];
     const rangey = [303, 317.5, 330.5, 345, 358.5, 372, 384.5];
 
@@ -63,6 +65,14 @@ function verInputs() {
 
     // Definir os pontos atualizados no atributo "points" do polígono
     area.setAttribute("points", pontosAtualizados);
+
+    document.getElementById("nota-power").textContent = notas[input5];
+    document.getElementById("nota-speed").textContent = notas[input6];
+    document.getElementById("nota-range").textContent = notas[input1];
+    document.getElementById("nota-durability").textContent = notas[input2];
+    document.getElementById("nota-precision").textContent = notas[input3];
+    document.getElementById("nota-potential").textContent = notas[input4];
+
 
 }
 
