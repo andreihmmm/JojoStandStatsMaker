@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -36,14 +37,24 @@ ul {
 
 li.salvo {
     background-color: cornflowerblue;
-    min-width: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 5px;
     transition: 0.3s ease-in-out;
 }
 
-a {
-    display: flex;
-    background-color: aliceblue;
+.chart-salvo {
+    background-color: white;
+    opacity: 0;
+    transition: 0.3s;
+    z-index: 1;
+    position: relative;
+}
+
+a.a-salvo {
     position: relative;
     top: 90px;
 }
@@ -58,16 +69,66 @@ a p {
 }
 
 .img-salvos {
-    max-width: 100%;
-    max-height: 100%;
-    opacity: 0;
-    transition: 0.3s;
-    z-index: 1;
-    position: relative;
+    max-width: 195px;
+    position: absolute;
 }
 
-.img-salvos:hover {
+.chart-salvo:hover {
     opacity: 1;
+}
+
+.a-chartzinho {
+    width: 195px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h5 {
+    font-size: 9px;
+}
+
+.power-chart-salvo {
+    position: absolute;
+    bottom: 170px;
+}
+
+.speed-chart-salvo {
+    position: absolute;
+    bottom: 130px;
+    left: 149px;
+    transform: rotate(60deg);
+}
+
+.range-chart-salvo {
+    position: absolute;
+    bottom: 60px;
+    left: 149px;
+    transform: rotate(-60deg);
+}
+
+.durability-chart-salvo {
+    position: absolute;
+    bottom: 20px;
+}
+
+.precision-chart-salvo {
+    position: absolute;
+    bottom: 55px;
+    right: 135px;
+    transform: rotate(60deg);
+}
+
+.potential-chart-salvo {
+    position: absolute;
+    bottom: 135px;
+    right: 135px;
+    transform: rotate(-60deg);
+}
+
+.notas-salvas {
+    font-size: 15px;
+    font-weight: bolder;
 }
 
 div#main {
@@ -154,4 +215,72 @@ img#input {
 
 .novo-nome {
     border-radius: 10px;
+}
+
+section#imagem {
+    height: 400px;
+    width: 400px;
+}
+
+img#chart-template {
+    position: absolute;
+    height: 400px;
+    width: 400px;
+}
+
+.azinho {
+    width: 400px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#nome-power {
+    top: 30px;
+}
+
+#nome-speed {
+    transform: rotate(60deg);
+    top: 100px;
+    left: 130px;
+}
+
+#nome-range {
+    top: 250px;
+    left: 130px;
+    transform: rotate(-60deg);
+}
+
+#nome-durability {
+    top: 330px;
+}
+
+#nome-precision {
+    top: 250px;
+    right: 130px;
+    transform: rotate(60deg);
+}
+
+#nome-potential {
+    top: 100px;
+    right: 130px;
+    transform: rotate(-60deg);
+}
+
+.notas {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+.nomesNovos {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bolder;
+    text-align: center;
+    border-width: 0;
+    width: 190px;
+    background-color: rgba(255, 0, 0, 0);
+    position: relative;
 }
