@@ -95,15 +95,15 @@ h5 {
 
 .speed-chart-salvo {
     position: absolute;
-    bottom: 130px;
-    left: 149px;
+    bottom: 132px;
+    left: 132px;
     transform: rotate(60deg);
 }
 
 .range-chart-salvo {
     position: absolute;
     bottom: 60px;
-    left: 149px;
+    left: 125px;
     transform: rotate(-60deg);
 }
 

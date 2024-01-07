@@ -31,7 +31,7 @@ function botaoStats() {
 }
 
 function salvarAtual() {
-    const notas = ['F', 'E', 'D', 'C', 'B', 'A'];
+    const notas = ['F', 'E', 'D', 'C', 'B', 'A', 'S'];
 
     var input1 = document.getElementById("input1").value;
     var input2 = document.getElementById("input2").value;
@@ -47,23 +47,23 @@ function salvarAtual() {
     var nomePrecision = document.getElementById("nome-precision").value;
     var nomePotential = document.getElementById("nome-potential").value;
 
-    const rangexSalvo = [96,]
-    const rangeySalvo = [98,]
+    const rangexSalvo = [96, 104, 111, 120, 128, 134, 142]
+    const rangeySalvo = [98, 103, 107, 112, 116, 120, 125]
 
-    const durabilityxSalvo = [96]
-    const durabilityySalvo = [98]
+    const durabilityxSalvo = [96, 96, 96, 96, 96, 96, 96]
+    const durabilityySalvo = [98, 108, 116, 126, 135, 143, 152]
 
-    const precisionxSalvo = [96]
-    const precisionySalvo = [98]
+    const precisionxSalvo = [96, 87, 80, 71, 63, 57, 49]
+    const precisionySalvo = [98, 103, 107, 112, 116, 120, 125]
 
-    const potentialxSalvo = [96]
-    const potentialySalvo = [98]
+    const potentialxSalvo = [96, 87, 80, 71, 63, 57, 49]
+    const potentialySalvo = [98, 93, 89, 84, 79, 75, 71]
 
-    const powerxSalvo = [96]
-    const powerySalvo = [98]
+    const powerxSalvo = [96, 96, 96, 96, 96, 95, 95]
+    const powerySalvo = [98, 88, 80, 70, 61, 53, 44]
 
-    const speedxSalvo = [96]
-    const speedySalvo = [98]
+    const speedxSalvo = [96, 104, 111, 120, 128, 134, 142]
+    const speedySalvo = [98, 93, 89, 84, 79, 75, 71]
 
     var nomeInput = document.querySelector("#input-nome").value;
     const lista = document.querySelector("body > header > ul");
@@ -118,55 +118,58 @@ function salvarAtual() {
     aChartzinho.appendChild(hprecision)
     aChartzinho.appendChild(hpotential)
 
-    var svg = document.createElement('svg');
+    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+
     svg.setAttribute("height", "195")
     svg.setAttribute("width", "195")
     secao.appendChild(svg)
 
-    var nrange = document.createElement('text')
+    //////////
+
+    var nrange = document.createElementNS("http://www.w3.org/2000/svg", "text");
     nrange.classList.add("notas-salvas")
-    nrange.innerText = notas[input1];
+    nrange.textContent = notas[input1];
     nrange.setAttribute("x", "143");
     nrange.setAttribute("y", "135");
     svg.appendChild(nrange);
 
-    var ndurability = document.createElement('text')
+    var ndurability = document.createElementNS("http://www.w3.org/2000/svg", "text");
     ndurability.classList.add("notas-salvas")
-    ndurability.innerText = notas[input2];
+    ndurability.textContent = notas[input2];
     ndurability.setAttribute("x", "92");
     ndurability.setAttribute("y", "165");
     svg.appendChild(ndurability);
 
-    var nprecision = document.createElement('text')
+    var nprecision = document.createElementNS("http://www.w3.org/2000/svg", "text");
     nprecision.classList.add("notas-salvas")
-    nprecision.innerText = notas[input3];
+    nprecision.textContent = notas[input3];
     nprecision.setAttribute("x", "40");
     nprecision.setAttribute("y", "136");
     svg.appendChild(nprecision);
 
-    var npotential = document.createElement('text')
+    var npotential = document.createElementNS("http://www.w3.org/2000/svg", "text");
     npotential.classList.add("notas-salvas")
-    npotential.innerText = notas[input4];
+    npotential.textContent = notas[input4];
     npotential.setAttribute("x", "38");
     npotential.setAttribute("y", "70");
     svg.appendChild(npotential);
 
-    var npower = document.createElement('text')
+    var npower = document.createElementNS("http://www.w3.org/2000/svg", "text");
     npower.classList.add("notas-salvas")
-    npower.innerText = notas[input5];
+    npower.textContent = notas[input5];
     npower.setAttribute("x", "92");
     npower.setAttribute("y", "42");
     svg.appendChild(npower);
 
-    var nspeed = document.createElement('text')
+    var nspeed = document.createElementNS("http://www.w3.org/2000/svg", "text");
     nspeed.classList.add("notas-salvas")
-    nspeed.innerText = notas[input6];
+    nspeed.textContent = notas[input6];
     nspeed.setAttribute("x", "145");
     nspeed.setAttribute("y", "72");
     svg.appendChild(nspeed);
+    /////
 
-
-    var poligono = document.createElement("polygon");
+    var poligono = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
     svg.appendChild(poligono);
 
 
