@@ -197,23 +197,23 @@ function verInputs() {
 
     const notas = ['F', 'E', 'D', 'C', 'B', 'A', 'S'];
 
-    const rangex = [215,];
-    const rangey = [211.5,];
+    const rangex = [199, 215, 230, 246, 263, 278, 292,]
+    const rangey = [202, 211, 220, 229, 239, 248, 256,]
 
-    const durabilityx = [199,];
-    const durabilityy = [221];
+    const durabilityx = [199, 199, 199, 199, 199, 199, 199]
+    const durabilityy = [202, 221, 238, 257, 276, 294, 310]
 
-    const precisionx = [182,];
-    const precisiony = [211.5,];
+    const precisionx = [199, 182, 167, 151, 134, 119, 105]
+    const precisiony = [202, 211, 220, 229, 239, 248, 256]
 
-    const potentialx = [182,];
-    const potentialy = [192.5,];
+    const potentialx = [199, 182, 167, 151, 134, 119, 105]
+    const potentialy = [202, 192, 184, 174, 165, 156, 148]
 
-    const powerx = [199,];
-    const powery = [183];
+    const powerx = [199, 199, 199, 199, 199, 198, 198]
+    const powery = [202, 183, 166, 147, 128, 110, 94]
 
-    const speedx = [215];
-    const speedy = [192.5];
+    const speedx = [199, 215, 230, 246, 263, 278, 292]
+    const speedy = [202, 192, 184, 174, 165, 156, 148]
 
     var input1 = document.getElementById("input1").value;
     var input2 = document.getElementById("input2").value;
