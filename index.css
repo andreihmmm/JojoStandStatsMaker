@@ -31,6 +31,7 @@ ul {
     display: flex;
     flex-direction: column-reverse;
     overflow-y: auto;
+    overflow-x: hidden;
     height: fit-content;
     max-height: 100vh;
 }
@@ -85,7 +86,9 @@ a p {
 }
 
 h5 {
-    font-size: 9px;
+    font-size: 8px;
+    text-align: center;
+    width: max-content;
 }
 
 .power-chart-salvo {
@@ -96,14 +99,14 @@ h5 {
 .speed-chart-salvo {
     position: absolute;
     bottom: 132px;
-    left: 132px;
+    left: 145px;
     transform: rotate(60deg);
 }
 
 .range-chart-salvo {
     position: absolute;
     bottom: 60px;
-    left: 125px;
+    left: 145px;
     transform: rotate(-60deg);
 }
 
@@ -114,15 +117,15 @@ h5 {
 
 .precision-chart-salvo {
     position: absolute;
-    bottom: 55px;
-    right: 135px;
+    bottom: 60px;
+    right: 139px;
     transform: rotate(60deg);
 }
 
 .potential-chart-salvo {
     position: absolute;
     bottom: 135px;
-    right: 135px;
+    right: 139px;
     transform: rotate(-60deg);
 }
 
@@ -167,6 +170,7 @@ section#esquerda {
 #imagens {
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 100%;
     min-width: 70%;
 }
@@ -194,6 +198,7 @@ img#chart {
 
 img#input {
     max-width: 30%;
+    position: relative;
 }
 
 .direita-aberta {
@@ -223,6 +228,7 @@ section#imagem {
 }
 
 img#chart-template {
+    pointer-events: none;
     position: absolute;
     height: 400px;
     width: 400px;
@@ -236,35 +242,32 @@ img#chart-template {
     justify-content: center;
 }
 
-#nome-power {
-    top: 30px;
-}
 
 #nome-speed {
     transform: rotate(60deg);
-    top: 100px;
+    top: 73px;
     left: 130px;
 }
 
 #nome-range {
-    top: 250px;
+    top: 227px;
     left: 130px;
     transform: rotate(-60deg);
 }
 
 #nome-durability {
-    top: 330px;
+    top: 305px;
 }
 
 #nome-precision {
-    top: 250px;
+    top: 227px;
     right: 130px;
     transform: rotate(60deg);
 }
 
 #nome-potential {
-    top: 100px;
-    right: 130px;
+    top: 73px;
+    right: 126px;
     transform: rotate(-60deg);
 }
 
@@ -283,4 +286,54 @@ img#chart-template {
     width: 190px;
     background-color: rgba(255, 0, 0, 0);
     position: relative;
+}
+
+.invisiveis {
+    width: 107px;
+    height: 1px;
+    position: relative;
+    cursor: pointer;
+    opacity: 0;
+}
+
+#input1 {
+
+    top: 215px;
+    left: 193px;
+    transform: rotate(30deg);
+}
+
+#input2 {
+    left: 34px;
+    top: 240px;
+    transform: rotate(90deg);
+}
+
+#input3 {
+    top: 215px;
+    right: 124px;
+    transform: rotate(150deg);
+}
+
+#input4 {
+    top: 142px;
+    left: 98px;
+    transform: rotate(210deg);
+}
+
+#input5 {
+    top: 115px;
+    left: 33px;
+    transform: rotate(270deg);
+}
+
+#input6 {
+    top: 141px;
+    right: 30px;
+    transform: rotate(330deg);
+}
+
+svg#meio {
+    position: absolute;
+    z-index: -1;
 }

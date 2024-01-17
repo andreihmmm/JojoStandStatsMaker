@@ -1,3 +1,6 @@
+const notas = ['F', 'E', 'D', 'C', 'B', 'A', 'S'];
+
+
 function botaoSalvos() {
     var header = document.querySelector("header");
     var classeHeader = header.className;
@@ -195,10 +198,8 @@ function salvarAtual() {
 
 function verInputs() {
 
-    const notas = ['F', 'E', 'D', 'C', 'B', 'A', 'S'];
-
-    const rangex = [199, 215, 230, 246, 263, 278, 292,]
-    const rangey = [202, 211, 220, 229, 239, 248, 256,]
+    const rangex = [199, 215, 230, 246, 263, 278, 292]
+    const rangey = [202, 211, 220, 229, 239, 248, 256]
 
     const durabilityx = [199, 199, 199, 199, 199, 199, 199]
     const durabilityy = [202, 221, 238, 257, 276, 294, 310]
@@ -271,3 +272,240 @@ function verInputs() {
 
 }
 
+// RANGE
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const rangex = [199, 215, 230, 246, 263, 278, 292]
+    const rangey = [202, 211, 220, 229, 239, 248, 256]
+
+    // Get the slider and output elements
+    var inputElement = document.getElementById('input1');
+    var vermelho = document.getElementById('vermelhinho');
+    var notaRangeElement = document.getElementById('nota-range');
+
+    function updatePoints() {
+        var valor = inputElement.value;
+
+        // Your logic to calculate new coordinates
+        var coord = [rangex[valor], rangey[valor]];
+
+        // Update the points attribute
+        var pontosAtuais = vermelho.getAttribute('points');
+        var valoresAntigos = pontosAtuais.split(' ');
+
+        // Update the first pair of coordinates
+        valoresAntigos[0] = coord[0] + ',' + coord[1];
+
+        // Update the 'points' attribute
+        vermelho.setAttribute('points', valoresAntigos.join(' '));
+
+        // Update the note
+        notaRangeElement.textContent = notas[valor];
+    }
+
+    // Initial update when DOM is loaded
+    updatePoints();
+
+    // Update points and note whenever the input value changes
+    inputElement.addEventListener('input', updatePoints);
+});
+
+// DURABILITY
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const durabilityx = [199, 199, 199, 199, 199, 199, 199]
+    const durabilityy = [202, 221, 238, 257, 276, 294, 310]
+
+    // Get the slider and output elements
+    var inputElement = document.getElementById('input2');
+    var vermelho = document.getElementById('vermelhinho');
+    var notaDurabilityElement = document.getElementById('nota-durability');
+
+    function updatePoints() {
+        var valor = inputElement.value;
+
+        // Your logic to calculate new coordinates
+        var coord = [durabilityx[valor], durabilityy[valor]];
+
+        // Update the points attribute
+        var pontosAtuais = vermelho.getAttribute('points');
+        var valoresAntigos = pontosAtuais.split(' ');
+
+        // Update the first pair of coordinates
+        valoresAntigos[1] = coord[0] + ',' + coord[1];
+
+        // Update the 'points' attribute
+        vermelho.setAttribute('points', valoresAntigos.join(' '));
+
+        // Update the note
+        notaDurabilityElement.textContent = notas[valor];
+    }
+
+    // Initial update when DOM is loaded
+    updatePoints();
+
+    // Update points and note whenever the input value changes
+    inputElement.addEventListener('input', updatePoints);
+});
+
+// PRECISION
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const precisionx = [199, 182, 167, 151, 134, 119, 105]
+    const precisiony = [202, 211, 220, 229, 239, 248, 256]
+
+    // Get the slider and output elements
+    var inputElement = document.getElementById('input3');
+    var vermelho = document.getElementById('vermelhinho');
+    var notaPrecisionElement = document.getElementById('nota-precision');
+
+    function updatePoints() {
+        var valor = inputElement.value;
+
+        // Your logic to calculate new coordinates
+        var coord = [precisionx[valor], precisiony[valor]];
+
+        // Update the points attribute
+        var pontosAtuais = vermelho.getAttribute('points');
+        var valoresAntigos = pontosAtuais.split(' ');
+
+        // Update the first pair of coordinates
+        valoresAntigos[2] = coord[0] + ',' + coord[1];
+
+        // Update the 'points' attribute
+        vermelho.setAttribute('points', valoresAntigos.join(' '));
+
+        // Update the note
+        notaPrecisionElement.textContent = notas[valor];
+    }
+
+    // Initial update when DOM is loaded
+    updatePoints();
+
+    // Update points and note whenever the input value changes
+    inputElement.addEventListener('input', updatePoints);
+});
+
+// POTENTIAL
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    const potentialx = [199, 182, 167, 151, 134, 119, 105]
+    const potentialy = [202, 192, 184, 174, 165, 156, 148]
+
+    // Get the slider and output elements
+    var inputElement = document.getElementById('input4');
+    var vermelho = document.getElementById('vermelhinho');
+    var notaPotentialElement = document.getElementById('nota-potential');
+
+    function updatePoints() {
+        var valor = inputElement.value;
+
+        // Your logic to calculate new coordinates
+        var coord = [potentialx[valor], potentialy[valor]];
+
+        // Update the points attribute
+        var pontosAtuais = vermelho.getAttribute('points');
+        var valoresAntigos = pontosAtuais.split(' ');
+
+        // Update the first pair of coordinates
+        valoresAntigos[3] = coord[0] + ',' + coord[1];
+
+        // Update the 'points' attribute
+        vermelho.setAttribute('points', valoresAntigos.join(' '));
+
+        // Update the note
+        notaPotentialElement.textContent = notas[valor];
+    }
+
+    // Initial update when DOM is loaded
+    updatePoints();
+
+    // Update points and note whenever the input value changes
+    inputElement.addEventListener('input', updatePoints);
+});
+
+// POWER
+
+document.addEventListener('DOMContentLoaded', function () {
+    const notas = ['F', 'E', 'D', 'C', 'B', 'A', 'S'];
+
+    const powerx = [199, 199, 199, 199, 199, 198, 198]
+    const powery = [202, 183, 166, 147, 128, 110, 94]
+
+    // Get the slider and output elements
+    var inputElement = document.getElementById('input5');
+    var vermelho = document.getElementById('vermelhinho');
+    var notaPowerElement = document.getElementById('nota-power');
+
+    function updatePoints() {
+        var valor = inputElement.value;
+
+        // Your logic to calculate new coordinates
+        var coord = [powerx[valor], powery[valor]];
+
+        // Update the points attribute
+        var pontosAtuais = vermelho.getAttribute('points');
+        var valoresAntigos = pontosAtuais.split(' ');
+
+        // Update the first pair of coordinates
+        valoresAntigos[4] = coord[0] + ',' + coord[1];
+
+        // Update the 'points' attribute
+        vermelho.setAttribute('points', valoresAntigos.join(' '));
+
+        // Update the note
+        notaPowerElement.textContent = notas[valor];
+    }
+
+    // Initial update when DOM is loaded
+    updatePoints();
+
+    // Update points and note whenever the input value changes
+    inputElement.addEventListener('input', updatePoints);
+});
+
+// SPEED
+
+document.addEventListener('DOMContentLoaded', function () {
+    const notas = ['F', 'E', 'D', 'C', 'B', 'A', 'S'];
+
+    const speedx = [199, 215, 230, 246, 263, 278, 292]
+    const speedy = [202, 192, 184, 174, 165, 156, 148]
+
+    // Get the slider and output elements
+    var inputElement = document.getElementById('input6');
+    var vermelho = document.getElementById('vermelhinho');
+    var notaSpeedElement = document.getElementById('nota-speed');
+
+    function updatePoints() {
+        var valor = inputElement.value;
+
+        // Your logic to calculate new coordinates
+        var coord = [speedx[valor], speedy[valor]];
+
+        // Update the points attribute
+        var pontosAtuais = vermelho.getAttribute('points');
+        var valoresAntigos = pontosAtuais.split(' ');
+
+        // Update the first pair of coordinates
+        valoresAntigos[5] = coord[0] + ',' + coord[1];
+
+        // Update the 'points' attribute
+        vermelho.setAttribute('points', valoresAntigos.join(' '));
+
+        // Update the note
+        notaSpeedElement.textContent = notas[valor];
+    }
+
+    // Initial update when DOM is loaded
+    updatePoints();
+
+    // Update points and note whenever the input value changes
+    inputElement.addEventListener('input', updatePoints);
+});

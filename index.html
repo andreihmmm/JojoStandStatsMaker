@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <header class="header-aberta">
+    <header class="header-fechada">
         <ul>
 
         </ul>
@@ -22,10 +22,31 @@
                 <span class="bola" onclick="botaoSalvos()"></span>
             </div>
             <div id="imagens">
+                <input type="text" placeholder="NOME" id="input-nome">
+
                 <div id="imagenszona">
                     <section id="imagem">
                         <img src="chart.png" alt="" id="chart-template">
+                        <svg id="meio" height="400" width="400">
+                            <polygon points="0,0 0,0 0,0 0,0 0,0 0,0" fill="red" id="vermelhinho" />
+                            <text x="187" y="87" class="notas" id="nota-power">F</text>
+                            <text x="83" y="145" class="notas" id="nota-potential">F</text>
+                            <text x="75" y="275" class="notas" id="nota-precision">F</text>
+                            <text x="187" y="343" class="notas" id="nota-durability">F</text>
+                            <text x="297" y="275" class="notas" id="nota-range">F</text>
+                            <text x="297" y="145" class="notas" id="nota-speed">F</text>
+
+                        </svg>
+
+                        <input type="range" id="input1" min="0" max="6" class="invisiveis">
+                        <input type="range" id="input2" min="0" max="6" class="invisiveis">
+                        <input type="range" id="input3" min="0" max="6" class="invisiveis">
+                        <input type="range" id="input4" min="0" max="6" class="invisiveis">
+                        <input type="range" id="input5" min="0" max="6" class="invisiveis">
+                        <input type="range" id="input6" min="0" max="6" class="invisiveis">
+
                         <a class="azinho">
+
                             <input type="text" class="nomesNovos" id="nome-power" value="POWER">
                         </a>
                         <a class="azinho">
@@ -43,16 +64,7 @@
                         <a class="azinho">
                             <input type="text" class="nomesNovos" id="nome-potential" value="POTENTIAL">
                         </a>
-                        <svg height="400" width="400">
-                            <polygon points="0,0 0,0 0,0 0,0 0,0 0,0" fill="red" id="vermelhinho" />
-                            <text x="187" y="87" class="notas" id="nota-power">F</text>
-                            <text x="83" y="145" class="notas" id="nota-potential">F</text>
-                            <text x="75" y="275" class="notas" id="nota-precision">F</text>
-                            <text x="187" y="343" class="notas" id="nota-durability">F</text>
-                            <text x="297" y="275" class="notas" id="nota-range">F</text>
-                            <text x="297" y="145" class="notas" id="nota-speed">F</text>
 
-                        </svg>
 
                     </section>
                     <img src="https://pbs.twimg.com/media/FEaSc6VXsAAeK4X.jpg:large" alt="imagem-input" id="input">
@@ -61,25 +73,7 @@
                     <button type="button" onclick="salvarAtual()" id="salvar-atual">SALVAR</button>
                 </div>
             </div>
-            <div class="botao-salvos">
-                <span class="bola" onclick="botaoStats()"></span>
-            </div>
-        </section>
-        <section id="direita" class="direita-fechada">
-            <section id="nome">
-                <p>DIGITE O NOME</p>
-                <input type="text" placeholder="NOME" id="input-nome">
-            </section>
-            <section id="slider">
-                <input type="range" id="input1" min="0" max="6">
-                <input type="range" id="input2" min="0" max="6">
-                <input type="range" id="input3" min="0" max="6">
-                <input type="range" id="input4" min="0" max="6">
-                <input type="range" id="input5" min="0" max="6">
-                <input type="range" id="input6" min="0" max="6">
 
-                <button type="button" id="botao" onclick="verInputs()">salvar</button>
-            </section>
         </section>
     </div>
 </body>
