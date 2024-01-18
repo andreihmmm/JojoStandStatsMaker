@@ -498,6 +498,7 @@ function abrirChartzinho() {
     });
 
 
+
     var notonas = document.querySelectorAll(".notas");
 
     var arrayzao = Array.from(notonas).map(function (element) {
@@ -515,12 +516,12 @@ function abrirChartzinho() {
 
     var novosPontos = getValuesAsString(arrayzao);
 
+    console.log(arrayzao)
+
     var vermelho = document.getElementById('vermelhinho');
 
     vermelho.setAttribute('points', novosPontos);
 
-
-    console.log(arrayzao)
 
 }
 
