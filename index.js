@@ -203,7 +203,12 @@ function salvarAtual() {
 
         poligono.setAttribute("fill", 'red');
 
+        // RESETA O CHART ATUAL
+
         document.querySelector("#input-nome").value = '';
+        resetarChart();
+
+
     }
 }
 
@@ -556,4 +561,15 @@ function getValuesAsString(noteVector) {
     resultString = resultString.trim();
 
     return resultString;
+}
+
+function resetarChart() {
+    var vermelho = document.getElementById('vermelhinho');
+    var resetChart = getValuesAsString(['C', 'C', 'C', 'C', 'C', 'C']);
+    vermelho.setAttribute('points', resetChart);
+
+    var notonas = document.querySelectorAll(".notas");
+    for (i = 0; i < 6; i++) {
+        notonas[i].innerHTML = 'C';
+    }
 }
