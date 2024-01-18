@@ -29,11 +29,12 @@ ul {
     background-color: pink;
     width: 100%;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
     height: fit-content;
     max-height: 100vh;
+    position: relative;
 }
 
 li.salvo {
@@ -45,6 +46,7 @@ li.salvo {
     justify-content: center;
     margin-bottom: 5px;
     transition: 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .chart-salvo {
@@ -56,8 +58,7 @@ li.salvo {
 }
 
 a.a-salvo {
-    position: relative;
-    top: 90px;
+    position: absolute;
 }
 
 a p {
@@ -94,39 +95,45 @@ h5 {
 .power-chart-salvo {
     position: absolute;
     bottom: 170px;
+    width: 100px;
 }
 
 .speed-chart-salvo {
     position: absolute;
-    bottom: 132px;
-    left: 145px;
+    bottom: 133px;
+    left: 111px;
     transform: rotate(60deg);
+    width: 100px;
 }
 
 .range-chart-salvo {
     position: absolute;
     bottom: 60px;
-    left: 145px;
+    left: 111px;
     transform: rotate(-60deg);
+    width: 100px;
 }
 
 .durability-chart-salvo {
     position: absolute;
     bottom: 20px;
+    width: 100px;
 }
 
 .precision-chart-salvo {
     position: absolute;
     bottom: 60px;
-    right: 139px;
+    right: 111px;
     transform: rotate(60deg);
+    width: 100px;
 }
 
 .potential-chart-salvo {
     position: absolute;
     bottom: 135px;
-    right: 139px;
+    right: 111px;
     transform: rotate(-60deg);
+    width: 100px;
 }
 
 .notas-salvas {
@@ -175,6 +182,12 @@ section#esquerda {
     min-width: 70%;
 }
 
+#input-nome {
+    text-align: center;
+    font-size: 20px;
+    border: none;
+}
+
 #imagenszona {
     display: flex;
     align-items: center;
@@ -188,7 +201,7 @@ section#esquerda {
     height: 10%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 img#chart {
@@ -242,16 +255,20 @@ img#chart-template {
     justify-content: center;
 }
 
+#nome-power {
+    top: 0px;
+}
+
 
 #nome-speed {
     transform: rotate(60deg);
     top: 73px;
-    left: 130px;
+    left: 240px;
 }
 
 #nome-range {
     top: 227px;
-    left: 130px;
+    left: 240px;
     transform: rotate(-60deg);
 }
 
@@ -261,13 +278,13 @@ img#chart-template {
 
 #nome-precision {
     top: 227px;
-    right: 130px;
+    right: 240px;
     transform: rotate(60deg);
 }
 
 #nome-potential {
-    top: 73px;
-    right: 126px;
+    top: 78px;
+    right: 237px;
     transform: rotate(-60deg);
 }
 
@@ -285,7 +302,7 @@ img#chart-template {
     border-width: 0;
     width: 190px;
     background-color: rgba(255, 0, 0, 0);
-    position: relative;
+    position: absolute;
 }
 
 .invisiveis {
