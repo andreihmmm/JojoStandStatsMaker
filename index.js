@@ -18,6 +18,39 @@ const powery = [202, 183, 166, 147, 128, 110, 94]
 const speedx = [199, 215, 230, 246, 263, 278, 292]
 const speedy = [202, 192, 184, 174, 165, 156, 148]
 
+const rangexSalvo = [96, 104, 111, 120, 128, 134, 142]
+const rangeySalvo = [98, 103, 107, 112, 116, 120, 125]
+
+const durabilityxSalvo = [96, 96, 96, 96, 96, 96, 96]
+const durabilityySalvo = [98, 108, 116, 126, 135, 143, 152]
+
+const precisionxSalvo = [96, 87, 80, 71, 63, 57, 49]
+const precisionySalvo = [98, 103, 107, 112, 116, 120, 125]
+
+const potentialxSalvo = [96, 87, 80, 71, 63, 57, 49]
+const potentialySalvo = [98, 93, 89, 84, 79, 75, 71]
+
+const powerxSalvo = [96, 96, 96, 96, 96, 95, 95]
+const powerySalvo = [98, 88, 80, 70, 61, 53, 44]
+
+const speedxSalvo = [96, 104, 111, 120, 128, 134, 142]
+const speedySalvo = [98, 93, 89, 84, 79, 75, 71]
+
+const noteMap = { 'F': 0, 'E': 1, 'D': 2, 'C': 3, 'B': 4, 'A': 5, 'S': 6 };
+const inputMap = { 0: 'F', 1: 'E', 2: 'D', 3: 'C', 4: 'B', 5: 'A', 6: 'S' };
+
+function resetarClicado() {
+    var clicado = document.getElementById("clicado");
+    if (clicado == null) {
+        console.log("there is no clicado")
+    }
+    else {
+        atualizarChartzinho(clicado);
+        console.log("clicado is no more")
+        clicado.setAttribute("id", '');
+        resetarChart();
+    }
+}
 
 function botaoSalvos() {
     var header = document.querySelector("header");
@@ -57,23 +90,7 @@ function salvarAtual() {
         var nomePrecision = document.getElementById("nome-precision").value;
         var nomePotential = document.getElementById("nome-potential").value;
 
-        const rangexSalvo = [96, 104, 111, 120, 128, 134, 142]
-        const rangeySalvo = [98, 103, 107, 112, 116, 120, 125]
 
-        const durabilityxSalvo = [96, 96, 96, 96, 96, 96, 96]
-        const durabilityySalvo = [98, 108, 116, 126, 135, 143, 152]
-
-        const precisionxSalvo = [96, 87, 80, 71, 63, 57, 49]
-        const precisionySalvo = [98, 103, 107, 112, 116, 120, 125]
-
-        const potentialxSalvo = [96, 87, 80, 71, 63, 57, 49]
-        const potentialySalvo = [98, 93, 89, 84, 79, 75, 71]
-
-        const powerxSalvo = [96, 96, 96, 96, 96, 95, 95]
-        const powerySalvo = [98, 88, 80, 70, 61, 53, 44]
-
-        const speedxSalvo = [96, 104, 111, 120, 128, 134, 142]
-        const speedySalvo = [98, 93, 89, 84, 79, 75, 71]
 
         const lista = document.querySelector("body > header > ul");
         var novoLi = document.createElement('li');
@@ -184,6 +201,7 @@ function salvarAtual() {
         svg.appendChild(poligono);
 
 
+
         var coordenadas = [
             [rangexSalvo[input1], rangeySalvo[input1]],
             [durabilityxSalvo[input2], durabilityySalvo[input2]],
@@ -208,15 +226,10 @@ function salvarAtual() {
         document.querySelector("#input-nome").value = '';
         resetarChart();
 
-
     }
 }
 
-
-
 function verInputs() {
-
-
 
     var input1 = document.getElementById("input1").value;
     var input2 = document.getElementById("input2").value;
@@ -492,44 +505,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
-
-function abrirChartzinho() {
-
-    var textos = this.querySelectorAll("text");
-
-    var arrayzinho = Array.from(textos).map(function (element) {
-        return element.innerHTML;
-    });
-
-
-
-    var notonas = document.querySelectorAll(".notas");
-
-    var arrayzao = Array.from(notonas).map(function (element) {
-        return element.innerHTML;
-    });
-
-
-    for (i = 0; i < 6; i++) {
-        arrayzao[i] = arrayzinho[i];
-    }
-
-    for (i = 0; i < 6; i++) {
-        notonas[i].innerHTML = arrayzao[i];
-    }
-
-    var novosPontos = getValuesAsString(arrayzao);
-
-    console.log(arrayzao)
-
-    var vermelho = document.getElementById('vermelhinho');
-
-    vermelho.setAttribute('points', novosPontos);
-
-
-}
-
 function getValuesAsString(noteVector) {
     const attributes = ["Range", "Durability", "Precision", "Potential", "Power", "Speed"];
     let resultString = "";
@@ -563,6 +538,113 @@ function getValuesAsString(noteVector) {
     return resultString;
 }
 
+function getValuesAsStringChartzinho(noteVector) {
+    const attributes = ["Range", "Durability", "Precision", "Potential", "Power", "Speed"];
+    let resultString = "";
+
+    if (noteVector.length !== 6) {
+        console.error("Invalid vector length");
+        return null;
+    }
+
+    noteVector.forEach((note, index) => {
+        const attributeName = attributes[index].toLowerCase();
+        const xValues = eval(`${attributeName}xSalvo`);
+        const yValues = eval(`${attributeName}ySalvo`);
+
+        const noteIndex = notas.indexOf(note.toUpperCase());
+
+        if (noteIndex === -1) {
+            console.error(`Invalid note: ${note}`);
+            return null;
+        }
+
+        const x = xValues[noteIndex];
+        const y = yValues[noteIndex];
+
+        resultString += `${x},${y} `;
+    });
+
+    // Remove trailing space
+    resultString = resultString.trim();
+
+    return resultString;
+}
+
+function pegarInputsChart() {
+    const rangeInputs = document.querySelectorAll('.invisiveis');
+    const resultado = [];
+
+    rangeInputs.forEach((input, index) => {
+        var inputValue = input.value;
+        resultado.push(inputValue);
+    });
+
+    console.log(resultado);
+
+    return resultado;
+}
+
+function abrirChartzinho() {
+
+    var clicadoAnterior = document.getElementById("clicado");
+
+    if (clicadoAnterior == null || clicadoAnterior == this) {
+        console.log("primeiro a ser clicado")
+    }
+    else {
+        atualizarChartzinho(clicadoAnterior);
+        clicadoAnterior.removeAttribute("id", "clicado")
+    }
+
+    var textos = this.querySelectorAll("text");
+
+    var arrayzinho = Array.from(textos).map(function (element) {
+        return element.innerHTML;
+    });
+
+    var notonas = document.querySelectorAll(".notas");
+
+    var arrayzao = Array.from(notonas).map(function (element) {
+        return element.innerHTML;
+    });
+
+
+    for (i = 0; i < 6; i++) {
+        arrayzao[i] = arrayzinho[i];
+    }
+
+    for (i = 0; i < 6; i++) {
+        notonas[i].innerHTML = arrayzao[i];
+    }
+
+    var novosPontos = getValuesAsString(arrayzao);
+
+    var vermelho = document.getElementById('vermelhinho');
+
+    vermelho.setAttribute('points', novosPontos);
+
+    this.setAttribute("id", "clicado")
+
+    updateRangeValues(arrayzinho)
+}
+
+function updateRangeValues(noteArray) {
+    const rangeInputs = document.querySelectorAll('.invisiveis');
+
+    if (noteArray.length !== rangeInputs.length) {
+        console.error('Array length mismatch. Cannot update range values.');
+        return;
+    }
+
+    rangeInputs.forEach((input, index) => {
+        const note = noteArray[index].toUpperCase();
+        const mappedValue = noteMap[note];
+        input.value = mappedValue;
+    });
+
+}
+
 function resetarChart() {
     var vermelho = document.getElementById('vermelhinho');
     var resetChart = getValuesAsString(['C', 'C', 'C', 'C', 'C', 'C']);
@@ -572,4 +654,47 @@ function resetarChart() {
     for (i = 0; i < 6; i++) {
         notonas[i].innerHTML = 'C';
     }
+
+
+    const rangeInputs = document.querySelectorAll('.invisiveis');
+
+    rangeInputs.forEach(input => {
+        // Set the desired value for each range input
+        input.value = '3'
+    });
+}
+
+function atualizarChartzinho(clicadoAnterior) {
+    // ATUALIZANDO AS NOTAS:
+
+    var textinhos = clicadoAnterior.querySelectorAll("text");
+
+    var inputsAtualizadas = pegarInputsChart();
+
+    textinhos.forEach((text, index) => {
+        var input = inputsAtualizadas[index];
+        var mappedNota = inputMap[input];
+        text.textContent = mappedNota;
+    })
+
+    // ATUALIZANDO O POLIGONO:
+
+    var poligoninho = clicadoAnterior.querySelector("polygon");
+
+    var coordenadinhasNovas = [
+        [rangexSalvo[inputsAtualizadas[0]], rangeySalvo[inputsAtualizadas[0]]],
+        [durabilityxSalvo[inputsAtualizadas[1]], durabilityySalvo[inputsAtualizadas[1]]],
+        [precisionxSalvo[inputsAtualizadas[2]], precisionySalvo[inputsAtualizadas[2]]],
+        [potentialxSalvo[inputsAtualizadas[3]], potentialySalvo[inputsAtualizadas[3]]],
+        [powerxSalvo[inputsAtualizadas[4]], powerySalvo[inputsAtualizadas[4]]],
+        [speedxSalvo[inputsAtualizadas[5]], speedySalvo[inputsAtualizadas[5]]]
+    ]
+
+    var pontinhosAtualizados = coordenadinhasNovas.map(function (coordenadinhasNovas) {
+        return coordenadinhasNovas.join(",");
+    }).join(" ");
+
+    poligoninho.setAttribute("points", pontinhosAtualizados)
+
+    alert("Stand stat salvo!!!");
 }

@@ -310,7 +310,7 @@ img#chart-template {
     height: 1px;
     position: relative;
     cursor: pointer;
-    opacity: 0;
+    opacity: 1;
 }
 
 #input1 {
