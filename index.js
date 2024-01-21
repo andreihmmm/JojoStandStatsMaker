@@ -41,12 +41,8 @@ const inputMap = { 0: 'F', 1: 'E', 2: 'D', 3: 'C', 4: 'B', 5: 'A', 6: 'S' };
 
 function resetarClicado() {
     var clicado = document.getElementById("clicado");
-    if (clicado == null) {
-        console.log("there is no clicado")
-    }
-    else {
+    if (clicado != null) {
         atualizarChartzinho(clicado);
-        console.log("clicado is no more")
         clicado.setAttribute("id", '');
         resetarChart();
     }
@@ -106,6 +102,11 @@ function salvarAtual() {
         var secao = document.createElement('section');
         secao.classList.add("chart-salvo");
         novoLi.appendChild(secao)
+        var imagemLixeira = document.createElement('img');
+        imagemLixeira.src = "lixeira.png";
+        imagemLixeira.classList.add("imagemLixeira")
+        secao.appendChild(imagemLixeira)
+
         var imagemChart = document.createElement('img');
         imagemChart.src = "chart.png";
         imagemChart.classList.add("img-salvos");
@@ -114,7 +115,7 @@ function salvarAtual() {
         aChartzinho.classList.add('a-chartzinho');
         secao.appendChild(aChartzinho);
 
-        novoLi.addEventListener('click', abrirChartzinho);
+        imagemChart.addEventListener('click', abrirChartzinho);
 
         var hpower = document.createElement("h5");
         hpower.classList.add("power-chart-salvo");
@@ -580,8 +581,6 @@ function pegarInputsChart() {
         resultado.push(inputValue);
     });
 
-    console.log(resultado);
-
     return resultado;
 }
 
@@ -589,7 +588,12 @@ function abrirChartzinho() {
 
     var clicadoAnterior = document.getElementById("clicado");
 
-    if (clicadoAnterior == null || clicadoAnterior == this) {
+    // COLOCA O NOME DO CHARTZINHO CLICADO NO INPUT
+
+    var nomeClicado = this.parentElement.parentElement.querySelector("p").innerText;
+    document.getElementById("input-nome").value = nomeClicado;
+
+    if (clicadoAnterior == null || clicadoAnterior == this.parentElement.parentElement) {
         console.log("primeiro a ser clicado")
     }
     else {
@@ -597,7 +601,7 @@ function abrirChartzinho() {
         clicadoAnterior.removeAttribute("id", "clicado")
     }
 
-    var textos = this.querySelectorAll("text");
+    var textos = this.parentElement.parentElement.querySelectorAll("text");
 
     var arrayzinho = Array.from(textos).map(function (element) {
         return element.innerHTML;
@@ -624,7 +628,7 @@ function abrirChartzinho() {
 
     vermelho.setAttribute('points', novosPontos);
 
-    this.setAttribute("id", "clicado")
+    this.parentElement.parentElement.setAttribute("id", "clicado")
 
     updateRangeValues(arrayzinho)
 }
@@ -646,6 +650,8 @@ function updateRangeValues(noteArray) {
 }
 
 function resetarChart() {
+    document.getElementById("input-nome").value = '';
+
     var vermelho = document.getElementById('vermelhinho');
     var resetChart = getValuesAsString(['C', 'C', 'C', 'C', 'C', 'C']);
     vermelho.setAttribute('points', resetChart);
@@ -665,16 +671,36 @@ function resetarChart() {
 }
 
 function atualizarChartzinho(clicadoAnterior) {
+
+    var notasSalvas = clicadoAnterior.querySelectorAll(".notas-salvas");
+
+    var textinhos = Array.from(notasSalvas);
+    var notasAntigas = [];
+
+    textinhos.forEach((text, index) => {
+        // Check if text has innerText property before pushing
+        if (text.innerHTML) {
+            notasAntigas.push(text.innerHTML);
+        } else {
+            console.warn("Element at index " + index + " has no innerText property.");
+        }
+    });
+
+
+
     // ATUALIZANDO AS NOTAS:
 
     var textinhos = clicadoAnterior.querySelectorAll("text");
 
     var inputsAtualizadas = pegarInputsChart();
 
+    var notasAtualizadas = []
+
     textinhos.forEach((text, index) => {
         var input = inputsAtualizadas[index];
         var mappedNota = inputMap[input];
         text.textContent = mappedNota;
+        notasAtualizadas.push(mappedNota);
     })
 
     // ATUALIZANDO O POLIGONO:
@@ -694,7 +720,62 @@ function atualizarChartzinho(clicadoAnterior) {
         return coordenadinhasNovas.join(",");
     }).join(" ");
 
-    poligoninho.setAttribute("points", pontinhosAtualizados)
+    poligoninho.setAttribute("points", pontinhosAtualizados);
 
-    alert("Stand stat salvo!!!");
+    // ATUALIZANDO O NOME:
+
+    clicadoAnterior.querySelector("p").innerText = document.getElementById("input-nome").value;
+
+    if (JSON.stringify(notasAntigas) !== JSON.stringify(notasAtualizadas)) {
+        alert("Stand stat salvo!!!");
+    }
+}
+
+///////////// DELETARRRR
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Attach click event listener to a common ancestor element (body in this example)
+    document.body.addEventListener('click', function (event) {
+        // Check if the clicked element has the class 'imagemLixeira'
+        if (event.target.classList.contains('imagemLixeira')) {
+            deletarChartzinho(event);
+        }
+    });
+
+    function deletarChartzinho(event) {
+        var result = window.confirm('Are you sure you want to delete?');
+
+        if (result) {
+            var clickedImage = event.target;
+            resetarChart();
+
+            if (clickedImage && clickedImage.parentElement.parentElement) {
+                clickedImage.parentElement.parentElement.remove();
+            } else {
+                console.error('Parent element not found.');
+            }
+        }
+    }
+
+});
+
+function handleImageInputChange() {
+    // Get the input element and its files
+    var input = document.getElementById('imageInput');
+    var files = input.files;
+
+    // Check if files were selected
+    if (files.length > 0) {
+        // Use FileReader to read the selected image file
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            // Set the source of an image element to display a preview
+            var previewImage = document.getElementById('inputImagem');
+            previewImage.src = e.target.result;
+        };
+
+        // Read the image file as a data URL
+        reader.readAsDataURL(files[0]);
+    }
 }

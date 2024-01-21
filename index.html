@@ -56,7 +56,12 @@
 
 
                     </section>
-                    <img src="https://pbs.twimg.com/media/FEaSc6VXsAAeK4X.jpg:large" alt="imagem-input" id="input">
+                    <div id="input">
+                        <img src="https://pbs.twimg.com/media/FEaSc6VXsAAeK4X.jpg:large" alt="imagem-input"
+                            id="inputImagem">
+                        <input type="file" id="imageInput" accept="image/*" onchange="handleImageInputChange()">
+
+                    </div>
                 </div>
                 <div id="imagens-baixo">
                     <button type="button" onclick="salvarAtual()" id="salvar-atual">SALVAR NOVO STAND STAT</button>

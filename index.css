@@ -19,6 +19,8 @@ body {
     min-height: 100vh;
     width: 250px;
     display: flex;
+    justify-content: center;
+
 }
 
 .header-fechada {
@@ -35,11 +37,13 @@ ul {
     height: fit-content;
     max-height: 100vh;
     position: relative;
+    align-items: center;
 }
 
 li.salvo {
-    background-color: cornflowerblue;
-    width: 100%;
+    background-color: rgb(237, 237, 237);
+    width: 96%;
+    height: 96%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,12 +53,37 @@ li.salvo {
     cursor: pointer;
 }
 
+li.salvo:nth-child(1) {
+    margin-top: 5px;
+    border-top-left-radius: 7px;
+}
+
+li.salvo:nth-last-child(1) {
+    border-bottom-left-radius: 7px;
+}
+
 .chart-salvo {
     background-color: white;
     opacity: 0;
     transition: 0.3s;
     z-index: 1;
     position: relative;
+    border-radius: 50%;
+}
+
+.imagemLixeira {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    height: 22px;
+    width: 22px;
+    z-index: 2;
+    transition: 0.5s;
+}
+
+.imagemLixeira:hover {
+    height: 25px;
+    width: 25px;
 }
 
 a.a-salvo {
@@ -183,6 +212,7 @@ section#esquerda {
 }
 
 #input-nome {
+    height: 10%;
     text-align: center;
     font-size: 20px;
     border: none;
@@ -209,9 +239,15 @@ img#chart {
     max-height: 80%;
 }
 
-img#input {
+#input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     max-width: 30%;
     position: relative;
+    transition: 0.5s;
+
 }
 
 .direita-aberta {
@@ -245,6 +281,7 @@ img#chart-template {
     position: absolute;
     height: 400px;
     width: 400px;
+    z-index: 1;
 }
 
 .azinho {
@@ -352,5 +389,22 @@ img#chart-template {
 
 svg#meio {
     position: absolute;
-    z-index: -1;
+    z-index: 0;
+}
+
+#inputImagem {
+    width: 90%;
+    height: 100%;
+}
+
+#imageInput {
+    opacity: 0;
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+}
+
+#input:hover>input {
+    display: flex;
+    opacity: 1;
 }
