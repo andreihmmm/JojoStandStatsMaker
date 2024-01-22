@@ -93,6 +93,14 @@ function salvarAtual() {
         novoLi.classList.add('salvo');
 
         lista.appendChild(novoLi);
+
+        var novaImagem = document.createElement('img');
+        novaImagem.classList.add("imagem-salva");
+        var fonteImagem = document.getElementById("inputImagem").src;
+        novaImagem.setAttribute("src", fonteImagem);
+
+        novoLi.appendChild(novaImagem);
+
         var aSalvo = document.createElement('a');
         aSalvo.classList.add("a-salvo");
         novoLi.appendChild(aSalvo);

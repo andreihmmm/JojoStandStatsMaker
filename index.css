@@ -68,7 +68,6 @@ li.salvo:nth-last-child(1) {
     transition: 0.3s;
     z-index: 1;
     position: relative;
-    border-radius: 50%;
 }
 
 .imagemLixeira {
@@ -106,6 +105,10 @@ a p {
 
 .chart-salvo:hover {
     opacity: 1;
+}
+
+.chart-salvo:hover+.imagem-salva {
+    opacity: 0;
 }
 
 .a-chartzinho {
@@ -407,4 +410,10 @@ svg#meio {
 #input:hover>input {
     display: flex;
     opacity: 1;
+}
+
+.imagem-salva {
+    width: 190px;
+    height: 198px;
+    position: absolute;
 }
