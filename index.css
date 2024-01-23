@@ -20,6 +20,7 @@ body {
     width: 250px;
     display: flex;
     justify-content: center;
+    overflow-y: auto;
 
 }
 
@@ -34,8 +35,6 @@ ul {
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
-    height: fit-content;
-    max-height: 100vh;
     position: relative;
     align-items: center;
 }
@@ -43,7 +42,7 @@ ul {
 li.salvo {
     background-color: rgb(237, 237, 237);
     width: 96%;
-    height: 96%;
+    height: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -51,6 +50,14 @@ li.salvo {
     margin-bottom: 5px;
     transition: 0.3s ease-in-out;
     cursor: pointer;
+}
+
+li.salvo:hover {
+    height: 200px;
+}
+
+li.salvo:hover .chart-salvo {
+    height: 200px;
 }
 
 li.salvo:nth-child(1) {
@@ -65,6 +72,7 @@ li.salvo:nth-last-child(1) {
 .chart-salvo {
     background-color: white;
     opacity: 0;
+    height: 70px;
     transition: 0.3s;
     z-index: 1;
     position: relative;
@@ -105,10 +113,27 @@ a p {
 
 .chart-salvo:hover {
     opacity: 1;
+    height: 100%;
 }
 
 .chart-salvo:hover+.imagem-salva {
     opacity: 0;
+}
+
+.chart-salvo * {
+    display: none;
+}
+
+.chart-salvo:hover * {
+    display: flex;
+}
+
+.chart-salvo:hover text {
+    display: block;
+}
+
+.chart-salvo:hover h5 {
+    display: block;
 }
 
 .a-chartzinho {
@@ -414,6 +439,6 @@ svg#meio {
 
 .imagem-salva {
     width: 190px;
-    height: 198px;
+    height: 70px;
     position: absolute;
 }

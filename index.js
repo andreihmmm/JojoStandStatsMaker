@@ -42,6 +42,7 @@ const inputMap = { 0: 'F', 1: 'E', 2: 'D', 3: 'C', 4: 'B', 5: 'A', 6: 'S' };
 function resetarClicado() {
     var clicado = document.getElementById("clicado");
     if (clicado != null) {
+
         atualizarChartzinho(clicado);
         clicado.setAttribute("id", '');
         resetarChart();
@@ -232,7 +233,6 @@ function salvarAtual() {
 
         // RESETA O CHART ATUAL
 
-        document.querySelector("#input-nome").value = '';
         resetarChart();
 
     }
@@ -596,18 +596,17 @@ function abrirChartzinho() {
 
     var clicadoAnterior = document.getElementById("clicado");
 
+
+    if (clicadoAnterior != null && clicadoAnterior != this.parentElement.parentElement) {
+        atualizarChartzinho(clicadoAnterior);
+        clicadoAnterior.removeAttribute("id", "clicado")
+    }
+
     // COLOCA O NOME DO CHARTZINHO CLICADO NO INPUT
 
     var nomeClicado = this.parentElement.parentElement.querySelector("p").innerText;
     document.getElementById("input-nome").value = nomeClicado;
 
-    if (clicadoAnterior == null || clicadoAnterior == this.parentElement.parentElement) {
-        console.log("primeiro a ser clicado")
-    }
-    else {
-        atualizarChartzinho(clicadoAnterior);
-        clicadoAnterior.removeAttribute("id", "clicado")
-    }
 
     var textos = this.parentElement.parentElement.querySelectorAll("text");
 
@@ -680,6 +679,13 @@ function resetarChart() {
 
 function atualizarChartzinho(clicadoAnterior) {
 
+    // ATUALIZANDO O NOME:
+
+    clicadoAnterior.querySelector("p").innerText = document.getElementById("input-nome").value;
+
+
+    console.log(clicadoAnterior)
+
     var notasSalvas = clicadoAnterior.querySelectorAll(".notas-salvas");
 
     var textinhos = Array.from(notasSalvas);
@@ -730,9 +736,6 @@ function atualizarChartzinho(clicadoAnterior) {
 
     poligoninho.setAttribute("points", pontinhosAtualizados);
 
-    // ATUALIZANDO O NOME:
-
-    clicadoAnterior.querySelector("p").innerText = document.getElementById("input-nome").value;
 
     if (JSON.stringify(notasAntigas) !== JSON.stringify(notasAtualizadas)) {
         alert("Stand stat salvo!!!");
