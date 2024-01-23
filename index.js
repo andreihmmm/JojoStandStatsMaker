@@ -67,12 +67,22 @@ function botaoSalvos() {
 
 function salvarAtual() {
 
+
     var nomeInput = document.querySelector("#input-nome").value;
 
     if (nomeInput == '') {
         alert("Nome não digitado... se liga man")
     }
     else {
+
+        /// ABRE A ABA LATERAL
+        var abaLateral = document.querySelector("header");
+
+        if (abaLateral.classList.contains("header-fechada")) {
+            abaLateral.classList.remove("header-fechada");
+            abaLateral.classList.add("header-aberta");
+        }
+
         var input1 = document.getElementById("input1").value;
         var input2 = document.getElementById("input2").value;
         var input3 = document.getElementById("input3").value;
@@ -95,12 +105,14 @@ function salvarAtual() {
 
         lista.appendChild(novoLi);
 
-        var novaImagem = document.createElement('img');
-        novaImagem.classList.add("imagem-salva");
-        var fonteImagem = document.getElementById("inputImagem").src;
-        novaImagem.setAttribute("src", fonteImagem);
-
-        novoLi.appendChild(novaImagem);
+        var fonteImagem = document.getElementById("inputImagem").getAttribute("src");
+        if (fonteImagem != "insert.png") {
+            var novaImagem = document.createElement('img');
+            novaImagem.classList.add("imagem-salva");
+            novaImagem.setAttribute("src", fonteImagem);
+            novoLi.appendChild(novaImagem);
+            console.log("nao ha imagem")
+        }
 
         var aSalvo = document.createElement('a');
         aSalvo.classList.add("a-salvo");
@@ -675,6 +687,9 @@ function resetarChart() {
         // Set the desired value for each range input
         input.value = '3'
     });
+
+    var imagemInput = document.getElementById("inputImagem")
+    imagemInput.src = "insert.png"
 }
 
 function atualizarChartzinho(clicadoAnterior) {
