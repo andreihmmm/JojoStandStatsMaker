@@ -448,7 +448,7 @@ svg#meio {
 }
 
 
-@media screen and (max-height: 1000px) {
+@media screen and (max-height: 1000px) and (max-width: 500px) {
 
     body {
         flex-direction: column-reverse;
