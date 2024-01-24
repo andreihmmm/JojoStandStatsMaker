@@ -472,7 +472,7 @@ svg#meio {
 #inputImagem {
     width: 90%;
     height: 100%;
-    border-radius: 10px;
+    border-radius: 3px;
 }
 
 #imageInput {
