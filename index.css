@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+    user-select: none;
 }
 
 
@@ -18,8 +19,6 @@ body {
 
 input {
     cursor: pointer;
-    user-select: none;
-
 }
 
 button {
@@ -81,13 +80,7 @@ li.salvo {
     transition: 0.6s ease-in-out;
     cursor: pointer;
     height: 70px;
-
 }
-
-li.salvo:nth-child(1) {
-    margin-top: 5px;
-}
-
 
 li.salvo:hover {
     height: 200px;
@@ -250,7 +243,29 @@ section#esquerda {
     height: 100%;
     width: 100%;
     background-color: #341269;
+    position: relative;
+}
 
+#fundo-esquerda {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    opacity: 0.05;
+}
+
+#fundo-esquerda:hover {
+    opacity: 1;
+}
+
+#fundo-body {
+    position: absolute;
+    right: 0px;
+    bottom: -27px;
+    opacity: 0.05;
+}
+
+#fundo-body:hover {
+    opacity: 1;
 }
 
 .bola {
@@ -286,7 +301,7 @@ section#esquerda {
     font-size: 30px;
     border: none;
     cursor: auto;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.5);
     color: #F7F411;
     border-radius: 10px;
     top: 10px;
@@ -480,7 +495,9 @@ svg#meio {
     transition: 0.5s;
     display: flex;
     align-items: center;
-
+    background-color: #341269;
+    border-radius: 3px;
+    padding: 2px;
 }
 
 #input:hover>input {
@@ -514,19 +531,22 @@ svg#meio {
     body {
         flex-direction: column-reverse;
         justify-content: flex-start;
-        overflow-x: hidden;
-        overflow-y: hidden;
+        height: auto;
+        overflow-x: auto;
     }
 
     .header-aberta {
         width: 100vw;
         min-height: 200px;
         padding: 0;
+        min-height: auto;
+        height: 230px;
     }
 
     ul {
         flex-direction: row;
         overflow-x: auto;
+        min-width: 100vw;
     }
 
     li.salvo:nth-child(1) {
@@ -541,7 +561,7 @@ svg#meio {
     div#main {
         display: flex;
         flex-direction: column-reverse;
-        height: 100%;
+
     }
 
     div#main .botao-salvos {
@@ -557,5 +577,27 @@ svg#meio {
     #imagenszona {
         flex-direction: column-reverse;
         height: auto;
+    }
+
+    #input-nome {
+        top: auto;
+        height: 30px;
+    }
+
+    #esquerda {
+        flex-direction: column;
+    }
+
+    #input {
+        left: 0;
+    }
+
+    #fundo-esquerda {
+        position: relative;
+        opacity: 0.7;
+    }
+
+    #fundo-body {
+        display: none;
     }
 }

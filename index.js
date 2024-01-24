@@ -842,3 +842,35 @@ function setarCorzinha(poligonoFormado) {
     var valorCor = document.getElementById("color-picker").value;
     poligonoFormado.setAttributeNS(null, "fill", valorCor);
 }
+
+///////// ALTERAR COR DO FUNDO BODY E ESQUERDA
+
+document.addEventListener('DOMContentLoaded', function () {
+    var corBody = document.getElementById('fundo-body');
+    var corEsquerda = document.getElementById('fundo-esquerda');
+
+    var body = document.querySelector('body');
+    var esquerda = document.getElementById('esquerda');
+
+    corBody.addEventListener('input', function () {
+        body.style.backgroundColor = corBody.value;
+    });
+
+    corEsquerda.addEventListener('input', function () {
+        esquerda.style.backgroundColor = corEsquerda.value;
+    });
+})
+
+
+window.addEventListener('beforeunload', function (e) {
+    // Cancel the event
+    e.preventDefault();
+    // Standard for most browsers
+    e.returnValue = '';
+
+    // Display a confirmation dialog
+    var confirmationMessage = 'Are you sure you want to leave? Your changes may not be saved.';
+    (e || window.event).returnValue = confirmationMessage; // For some older browsers
+
+    return confirmationMessage;
+});
