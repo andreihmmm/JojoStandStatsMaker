@@ -101,11 +101,15 @@ function salvarAtual() {
         var nomePrecision = document.getElementById("nome-precision").value;
         var nomePotential = document.getElementById("nome-potential").value;
 
-
+        var corAtualEsquerda = document.getElementById("fundo-esquerda").value
+        var corAtualBody = document.getElementById("fundo-body").value
 
         const lista = document.querySelector("body > header > ul");
         var novoLi = document.createElement('li');
         novoLi.classList.add('salvo');
+
+        novoLi.setAttribute("color-body", corAtualBody);
+        novoLi.setAttribute("color-esquerda", corAtualEsquerda);
 
         lista.appendChild(novoLi);
 
@@ -224,8 +228,6 @@ function salvarAtual() {
 
         var poligono = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
         svg.appendChild(poligono);
-
-
 
         var coordenadas = [
             [rangexSalvo[input1], rangeySalvo[input1]],
@@ -749,6 +751,13 @@ function abrirChartzinho() {
         var imagemEscolhida = this.parentElement.parentElement.querySelector(".imagem-salva").getAttribute("src");
         document.getElementById("inputImagem").setAttribute("src", imagemEscolhida);
     }
+
+    ///ATUALIZA A COR DO FUNDO
+    var body = document.querySelector('body')
+    var esquerda = document.querySelector('#esquerda')
+
+    body.style.backgroundColor = this.parentElement.parentElement.getAttribute('color-body')
+    esquerda.style.backgroundColor = this.parentElement.parentElement.getAttribute('color-esquerda')
 }
 
 function updateRangeValues(noteArray) {
@@ -1015,8 +1024,12 @@ function desestilizarLi(Li) {
     Li.querySelectorAll('*').forEach(function (element) {
         element.style.display = "revert-layer";
     });
+    console.log(chartSalvo.querySelector(".imagem-salva"))
 
-    if (Li.parentElement.parentElement.querySelector(".imagem-salva") != null) {
-        Li.parentElement.parentElement.querySelector(".imagem-salva").style.opacity = "revert-layer";
+
+    if (Li.querySelector(".imagem-salva") != null) {
+        console.log("entrou")
+        Li.querySelector(".imagem-salva").style.opacity = "revert-layer";
+
     }
 }
