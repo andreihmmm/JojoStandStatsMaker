@@ -67,7 +67,6 @@ function botaoSalvos() {
 
 function salvarAtual() {
 
-
     var nomeInput = document.querySelector("#input-nome").value;
 
     if (nomeInput == '') {
@@ -111,7 +110,6 @@ function salvarAtual() {
             novaImagem.classList.add("imagem-salva");
             novaImagem.setAttribute("src", fonteImagem);
             novoLi.appendChild(novaImagem);
-            console.log("nao ha imagem")
         }
 
         var aSalvo = document.createElement('a');
@@ -657,12 +655,10 @@ function abrirChartzinho() {
     document.getElementById("color-picker").value = corDoChartzinho
     vermelho.setAttributeNS(null, "fill", corDoChartzinho)
 
-    console.log(corDoChartzinho)
-
     ///COLOCA A IMAGEM DO CHARTZINHO NA PARADA DE INPUT
-
-    var imagemEscolhida = this.parentElement.querySelector(".imagem-salva").getAttribute("src");
-    document.getElementById("input-imagem").setAttribute("src", imagemEscolhida);
+    console.log(document.getElementById("inputImagem"))
+    var imagemEscolhida = this.parentElement.parentElement.querySelector(".imagem-salva").getAttribute("src");
+    document.getElementById("inputImagem").setAttribute("src", imagemEscolhida);
 }
 
 function updateRangeValues(noteArray) {
@@ -718,9 +714,6 @@ function atualizarChartzinho(clicadoAnterior) {
     // ATUALIZANDO O NOME:
 
     clicadoAnterior.querySelector("p").innerText = document.getElementById("input-nome").value;
-
-
-    console.log(clicadoAnterior)
 
     var notasSalvas = clicadoAnterior.querySelectorAll(".notas-salvas");
 
