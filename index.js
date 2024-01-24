@@ -67,6 +67,11 @@ function botaoSalvos() {
 
 function salvarAtual() {
 
+    if (document.getElementById("clicado") != null) {
+        alert("Se liga man.... voce ta editando um salvo...")
+        return 0;
+    }
+
     var nomeInput = document.querySelector("#input-nome").value;
 
     if (nomeInput == '') {
@@ -248,63 +253,6 @@ function salvarAtual() {
     }
 }
 
-function verInputs() {
-
-    var input1 = document.getElementById("input1").value;
-    var input2 = document.getElementById("input2").value;
-    var input3 = document.getElementById("input3").value;
-    var input4 = document.getElementById("input4").value;
-    var input5 = document.getElementById("input5").value;
-    var input6 = document.getElementById("input6").value;
-
-    var area = document.getElementById("vermelhinho");
-
-    var pontosAtuais = area.getAttribute("points");
-
-    var coordenadas = pontosAtuais.split(" ").map(function (coordenada) {
-        return coordenada.split(",").map(parseFloat);
-    });
-
-    coordenadas[0][0] = rangex[input1];
-    coordenadas[0][1] = rangey[input1];
-
-
-    coordenadas[1][0] = durabilityx[input2];
-    coordenadas[1][1] = durabilityy[input2];
-
-
-    coordenadas[2][0] = precisionx[input3];
-    coordenadas[2][1] = precisiony[input3];
-
-
-    coordenadas[3][0] = potentialx[input4];
-    coordenadas[3][1] = potentialy[input4];
-
-
-    coordenadas[4][0] = powerx[input5];
-    coordenadas[4][1] = powery[input5];
-
-
-    coordenadas[5][0] = speedx[input6];
-    coordenadas[5][1] = speedy[input6];
-
-    // Criar uma string atualizada para o atributo "points"
-    var pontosAtualizados = coordenadas.map(function (coordenada) {
-        return coordenada.join(",");
-    }).join(" ");
-
-    // Definir os pontos atualizados no atributo "points" do polígono
-    area.setAttribute("points", pontosAtualizados);
-
-    document.getElementById("nota-power").textContent = notas[input5];
-    document.getElementById("nota-speed").textContent = notas[input6];
-    document.getElementById("nota-range").textContent = notas[input1];
-    document.getElementById("nota-durability").textContent = notas[input2];
-    document.getElementById("nota-precision").textContent = notas[input3];
-    document.getElementById("nota-potential").textContent = notas[input4];
-
-
-}
 
 // RANGE
 
@@ -316,7 +264,32 @@ document.addEventListener('DOMContentLoaded', function () {
     var notaRangeElement = document.getElementById('nota-range');
 
     function updatePoints() {
+        // Get the small output element
+
         var valor = inputElement.value;
+
+        if (document.getElementById('clicado') != null) {
+            var clicado = document.getElementById('clicado');
+            var poligoninho = clicado.querySelector('polygon');
+            var notinha = document.querySelector("#clicado > section > svg > text:nth-child(1)")
+
+            // Your logic to calculate new coordinates
+            var coord = [rangexSalvo[valor], rangeySalvo[valor]];
+
+            // Update the points attribute
+            var pontosAtuais = poligoninho.getAttribute('points');
+            var valoresAntigos = pontosAtuais.split(' ');
+
+            // Update the first pair of coordinates
+            valoresAntigos[0] = coord[0] + ',' + coord[1];
+
+            // Update the 'points' attribute
+            poligoninho.setAttribute('points', valoresAntigos.join(' '));
+
+            // Update the note
+            notinha.textContent = notas[valor];
+        }
+
 
         // Your logic to calculate new coordinates
         var coord = [rangex[valor], rangey[valor]];
@@ -355,6 +328,29 @@ document.addEventListener('DOMContentLoaded', function () {
     function updatePoints() {
         var valor = inputElement.value;
 
+        if (document.getElementById('clicado') != null) {
+            var clicado = document.getElementById('clicado');
+            var poligoninho = clicado.querySelector('polygon');
+            var notinha = document.querySelector("#clicado > section > svg > text:nth-child(2)")
+
+            // Your logic to calculate new coordinates
+            var coord = [durabilityxSalvo[valor], durabilityySalvo[valor]];
+
+            // Update the points attribute
+            var pontosAtuais = poligoninho.getAttribute('points');
+            var valoresAntigos = pontosAtuais.split(' ');
+
+            // Update the first pair of coordinates
+            valoresAntigos[1] = coord[0] + ',' + coord[1];
+
+            // Update the 'points' attribute
+            poligoninho.setAttribute('points', valoresAntigos.join(' '));
+
+            // Update the note
+            notinha.textContent = notas[valor];
+        }
+
+
         // Your logic to calculate new coordinates
         var coord = [durabilityx[valor], durabilityy[valor]];
 
@@ -390,6 +386,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updatePoints() {
         var valor = inputElement.value;
+
+        if (document.getElementById('clicado') != null) {
+            var clicado = document.getElementById('clicado');
+            var poligoninho = clicado.querySelector('polygon');
+            var notinha = document.querySelector("#clicado > section > svg > text:nth-child(3)")
+
+            // Your logic to calculate new coordinates
+            var coord = [precisionxSalvo[valor], precisionySalvo[valor]];
+
+            // Update the points attribute
+            var pontosAtuais = poligoninho.getAttribute('points');
+            var valoresAntigos = pontosAtuais.split(' ');
+
+            // Update the first pair of coordinates
+            valoresAntigos[2] = coord[0] + ',' + coord[1];
+
+            // Update the 'points' attribute
+            poligoninho.setAttribute('points', valoresAntigos.join(' '));
+
+            // Update the note
+            notinha.textContent = notas[valor];
+        }
 
         // Your logic to calculate new coordinates
         var coord = [precisionx[valor], precisiony[valor]];
@@ -427,6 +445,29 @@ document.addEventListener('DOMContentLoaded', function () {
     function updatePoints() {
         var valor = inputElement.value;
 
+
+        if (document.getElementById('clicado') != null) {
+            var clicado = document.getElementById('clicado');
+            var poligoninho = clicado.querySelector('polygon');
+            var notinha = document.querySelector("#clicado > section > svg > text:nth-child(4)")
+
+            // Your logic to calculate new coordinates
+            var coord = [potentialxSalvo[valor], potentialySalvo[valor]];
+
+            // Update the points attribute
+            var pontosAtuais = poligoninho.getAttribute('points');
+            var valoresAntigos = pontosAtuais.split(' ');
+
+            // Update the first pair of coordinates
+            valoresAntigos[3] = coord[0] + ',' + coord[1];
+
+            // Update the 'points' attribute
+            poligoninho.setAttribute('points', valoresAntigos.join(' '));
+
+            // Update the note
+            notinha.textContent = notas[valor];
+        }
+
         // Your logic to calculate new coordinates
         var coord = [potentialx[valor], potentialy[valor]];
 
@@ -463,6 +504,28 @@ document.addEventListener('DOMContentLoaded', function () {
     function updatePoints() {
         var valor = inputElement.value;
 
+        if (document.getElementById('clicado') != null) {
+            var clicado = document.getElementById('clicado');
+            var poligoninho = clicado.querySelector('polygon');
+            var notinha = document.querySelector("#clicado > section > svg > text:nth-child(5)")
+
+            // Your logic to calculate new coordinates
+            var coord = [powerxSalvo[valor], powerySalvo[valor]];
+
+            // Update the points attribute
+            var pontosAtuais = poligoninho.getAttribute('points');
+            var valoresAntigos = pontosAtuais.split(' ');
+
+            // Update the first pair of coordinates
+            valoresAntigos[4] = coord[0] + ',' + coord[1];
+
+            // Update the 'points' attribute
+            poligoninho.setAttribute('points', valoresAntigos.join(' '));
+
+            // Update the note
+            notinha.textContent = notas[valor];
+        }
+
         // Your logic to calculate new coordinates
         var coord = [powerx[valor], powery[valor]];
 
@@ -498,6 +561,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updatePoints() {
         var valor = inputElement.value;
+
+        if (document.getElementById('clicado') != null) {
+            var clicado = document.getElementById('clicado');
+            var poligoninho = clicado.querySelector('polygon');
+            var notinha = document.querySelector("#clicado > section > svg > text:nth-child(6)")
+
+            // Your logic to calculate new coordinates
+            var coord = [speedxSalvo[valor], speedySalvo[valor]];
+
+            // Update the points attribute
+            var pontosAtuais = poligoninho.getAttribute('points');
+            var valoresAntigos = pontosAtuais.split(' ');
+
+            // Update the first pair of coordinates
+            valoresAntigos[5] = coord[0] + ',' + coord[1];
+
+            // Update the 'points' attribute
+            poligoninho.setAttribute('points', valoresAntigos.join(' '));
+
+            // Update the note
+            notinha.textContent = notas[valor];
+        }
 
         // Your logic to calculate new coordinates
         var coord = [speedx[valor], speedy[valor]];
@@ -606,7 +691,6 @@ function abrirChartzinho() {
 
     var clicadoAnterior = document.getElementById("clicado");
 
-
     if (clicadoAnterior != null && clicadoAnterior != this.parentElement.parentElement) {
         atualizarChartzinho(clicadoAnterior);
         clicadoAnterior.removeAttribute("id", "clicado")
@@ -646,6 +730,10 @@ function abrirChartzinho() {
 
     this.parentElement.parentElement.setAttribute("id", "clicado")
 
+    /// ESTILIZA O LI
+
+    estilizarLi(this);
+
     updateRangeValues(arrayzinho)
 
     ///COLOCA A COR DO CHARTZINHO CLICADO NO INPUT & NO POLIGONO
@@ -656,9 +744,11 @@ function abrirChartzinho() {
     vermelho.setAttributeNS(null, "fill", corDoChartzinho)
 
     ///COLOCA A IMAGEM DO CHARTZINHO NA PARADA DE INPUT
-    console.log(document.getElementById("inputImagem"))
-    var imagemEscolhida = this.parentElement.parentElement.querySelector(".imagem-salva").getAttribute("src");
-    document.getElementById("inputImagem").setAttribute("src", imagemEscolhida);
+
+    if (this.parentElement.parentElement.querySelector(".imagem-salva") != null) {
+        var imagemEscolhida = this.parentElement.parentElement.querySelector(".imagem-salva").getAttribute("src");
+        document.getElementById("inputImagem").setAttribute("src", imagemEscolhida);
+    }
 }
 
 function updateRangeValues(noteArray) {
@@ -710,6 +800,8 @@ function resetarChart() {
 }
 
 function atualizarChartzinho(clicadoAnterior) {
+
+    desestilizarLi(clicadoAnterior)
 
     // ATUALIZANDO O NOME:
 
@@ -832,9 +924,17 @@ document.addEventListener('DOMContentLoaded', function () {
     var poligono = document.getElementById("vermelhinho");
 
     input.addEventListener('input', function () {
-        poligono.setAttributeNS(null, "fill", input.value);
+        var Li = document.getElementById("clicado");
+
+        if (Li !== null) {
+            poligono.setAttribute("fill", input.value);
+            Li.querySelector("polygon").setAttributeNS(null, "fill", input.value);
+        } else {
+            poligono.setAttributeNS(null, "fill", input.value);
+        }
     });
 });
+
 
 ///////// ALTERAR COR DO CHART SALVO
 
@@ -874,3 +974,49 @@ window.addEventListener('beforeunload', function (e) {
 
     return confirmationMessage;
 });
+
+function estilizarLi(imagemChart) {
+    imagemChart.parentElement.parentElement.style.height = "200px"
+    imagemChart.parentElement.parentElement.querySelector(".chart-salvo").style.height = "200px";
+    imagemChart.parentElement.parentElement.querySelector(".chart-salvo").style.borderRadius = "50%";
+    var chartSalvo = imagemChart.parentElement.parentElement.querySelector(".chart-salvo");
+
+    chartSalvo.style.opacity = "1"
+    chartSalvo.style.height = "100%"
+    // Set display property to "flex" for all elements inside ".chart-salvo"
+    chartSalvo.querySelectorAll('*').forEach(function (element) {
+        element.style.display = "flex";
+    });
+
+    // Set display property to "block" for all 'text' elements inside ".chart-salvo"
+    chartSalvo.querySelectorAll('text').forEach(function (element) {
+        element.style.display = "block";
+    });
+
+    // Set display property to "block" for all 'h5' elements inside ".chart-salvo"
+    chartSalvo.querySelectorAll('h5').forEach(function (element) {
+        element.style.display = "block";
+    });
+
+    if (imagemChart.parentElement.parentElement.querySelector(".imagem-salva") != null) {
+        imagemChart.parentElement.parentElement.querySelector(".imagem-salva").style.opacity = "0";
+    }
+}
+
+function desestilizarLi(Li) {
+    Li.style.height = "revert-layer"
+    Li.parentElement.parentElement.querySelector(".chart-salvo").style.height = "revert-layer";
+    Li.parentElement.parentElement.querySelector(".chart-salvo").style.borderRadius = "revert-layer";
+    var chartSalvo = Li.querySelector(".chart-salvo");
+
+    chartSalvo.style.opacity = "revert-layer"
+    chartSalvo.style.display = "revert-layer"
+    // Set display property to "flex" for all elements inside ".chart-salvo"
+    Li.querySelectorAll('*').forEach(function (element) {
+        element.style.display = "revert-layer";
+    });
+
+    if (Li.parentElement.parentElement.querySelector(".imagem-salva") != null) {
+        Li.parentElement.parentElement.querySelector(".imagem-salva").style.opacity = "revert-layer";
+    }
+}
