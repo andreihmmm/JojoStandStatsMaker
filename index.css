@@ -11,17 +11,46 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #16002d;
+    overflow-x: hidden;
+}
+
+input {
+    cursor: pointer;
+    user-select: none;
+
+}
+
+button {
+    cursor: pointer;
+    height: 50%;
+    background-color: #5b3f87;
+    color: #F7F411;
+    border-radius: 5px;
+    border: none;
+    padding: 3px;
+    transition: 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: #e43b52;
+}
+
+
+
+#input-nome::placeholder {
+    color: rgba(247, 244, 17, 0.5);
 }
 
 .header-aberta {
-    background-color: aqua;
+    background-color: #5b3f87;
     max-height: 100%;
     min-height: 100vh;
     width: 272px;
     display: flex;
-    justify-content: center;
+    justify-content: right;
     overflow-y: auto;
-    padding: 5px 0 5px 5px;
+    padding: 10px 0 10px 5px;
 }
 
 .header-fechada {
@@ -29,24 +58,25 @@ body {
 }
 
 ul {
-    background-color: pink;
-    width: 100%;
+    background-color: #4366b8;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;
     align-items: center;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    min-width: 195px;
 }
 
 li.salvo {
-    background-color: rgb(36, 32, 33);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-bottom: 5px;
-    transition: 0.3s ease-in-out;
+    transition: 0.6s ease-in-out;
     cursor: pointer;
     height: 70px;
 
@@ -63,15 +93,13 @@ li.salvo:hover {
 
 li.salvo:hover .chart-salvo {
     height: 200px;
+    border-radius: 50%
 }
 
-.imagem-salva:nth-child(1) {
-    border-top-left-radius: 7px;
+li.salvo:hover .imagem-salva {
+    opacity: 0;
 }
 
-.imagem-salva:nth-last-child(1) {
-    border-bottom-left-radius: 7px;
-}
 
 .chart-salvo {
     background-color: white;
@@ -102,12 +130,13 @@ a.a-salvo {
 }
 
 a p {
-    background-color: darkorange;
+    color: #F7F411;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 100%;
+    font-size: larger;
 }
 
 .img-salvos {
@@ -204,7 +233,7 @@ h5 {
 
 div#main {
     width: 100%;
-    height: 80%;
+    height: 90%;
     display: flex;
 
 }
@@ -215,10 +244,12 @@ section#esquerda {
     align-items: center;
     height: 100%;
     width: 100%;
+    background-color: #341269;
+
 }
 
 .bola {
-    background-color: darkgoldenrod;
+    background-color: #FFCF70;
     border-radius: 50%;
     height: 30px;
     width: 30px;
@@ -230,7 +261,7 @@ section#esquerda {
 
 .botao-salvos {
     height: 100%;
-    background-color: purple;
+    background-color: #9D4EDD;
     display: flex;
     align-items: center;
 }
@@ -241,6 +272,7 @@ section#esquerda {
     align-items: center;
     height: 100%;
     min-width: 70%;
+
 }
 
 #input-nome {
@@ -248,6 +280,12 @@ section#esquerda {
     text-align: center;
     font-size: 30px;
     border: none;
+    cursor: auto;
+    background-color: rgba(0, 0, 0, 0);
+    color: #F7F411;
+    border-radius: 10px;
+    top: 10px;
+    position: relative;
 }
 
 #imagenszona {
@@ -257,6 +295,7 @@ section#esquerda {
     height: 90%;
     width: 100%;
 }
+
 
 #imagens-baixo {
     width: 100%;
@@ -278,18 +317,17 @@ img#chart {
     justify-content: center;
     max-width: 30%;
     position: relative;
+    left: 20px;
     transition: 0.5s;
-
+    color: #F7F411;
 }
 
-.direita-aberta {
-    background-color: rgb(126, 126, 197);
-    display: grid;
-    align-items: normal;
-}
-
-.direita-fechada {
-    display: none;
+#color-picker {
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
 }
 
 .textos {
@@ -304,6 +342,8 @@ img#chart {
 }
 
 section#imagem {
+    background-color: white;
+    border-radius: 50%;
     height: 400px;
     width: 400px;
 }
@@ -427,6 +467,7 @@ svg#meio {
 #inputImagem {
     width: 90%;
     height: 100%;
+    border-radius: 10px;
 }
 
 #imageInput {
@@ -442,11 +483,25 @@ svg#meio {
 }
 
 .imagem-salva {
-    width: 190px;
+    width: 100%;
     height: 70px;
     position: absolute;
 }
 
+/* For WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 6px;
+    direction: rtl;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #e43b52;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #370034;
+}
 
 @media screen and (max-height: 1000px) and (max-width: 500px) {
 
@@ -470,6 +525,11 @@ svg#meio {
 
     li.salvo:nth-child(1) {
         margin-top: 0px;
+    }
+
+    .imagem-salva {
+        height: 100%;
+        width: auto;
     }
 
     div#main {

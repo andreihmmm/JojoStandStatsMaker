@@ -29,7 +29,7 @@
                     <section id="imagem">
                         <img src="chart.png" alt="" id="chart-template">
                         <svg id="meio" height="400" width="400">
-                            <polygon points="0,0 0,0 0,0 0,0 0,0 0,0" fill="red" id="vermelhinho" />
+                            <polygon points="0,0 0,0 0,0 0,0 0,0 0,0" id="vermelhinho" fill="#ff0000" />
 
                             <text x="297" y="275" class="notas" id="nota-range">F</text>
                             <text x="187" y="343" class="notas" id="nota-durability">F</text>
@@ -38,14 +38,12 @@
                             <text x="187" y="87" class="notas" id="nota-power">F</text>
                             <text x="297" y="145" class="notas" id="nota-speed">F</text>
                         </svg>
-
                         <input type="range" id="input1" min="0" max="6" class="invisiveis">
                         <input type="range" id="input2" min="0" max="6" class="invisiveis">
                         <input type="range" id="input3" min="0" max="6" class="invisiveis">
                         <input type="range" id="input4" min="0" max="6" class="invisiveis">
                         <input type="range" id="input5" min="0" max="6" class="invisiveis">
                         <input type="range" id="input6" min="0" max="6" class="invisiveis">
-
                         <a class="azinho">
                             <input type="text" class="nomesNovos" id="nome-power" value="POWER">
                             <input type="text" class="nomesNovos" id="nome-speed" value="SPEED">
@@ -54,14 +52,14 @@
                             <input type="text" class="nomesNovos" id="nome-precision" value="PRECISION">
                             <input type="text" class="nomesNovos" id="nome-potential" value="POTENTIAL">
                         </a>
-
-
                     </section>
-                    <div id="input">
+
+                    <input type="color" id="color-picker" value="#ff0000">
+
+                    <label for="imageInput" id="input">
                         <img src="insert.png" alt="imagem-input" id="inputImagem">
                         <input type="file" id="imageInput" accept="image/*" onchange="handleImageInputChange()">
-
-                    </div>
+                    </label>
                 </div>
                 <div id="imagens-baixo">
                     <button type="button" onclick="salvarAtual()" id="salvar-atual">SALVAR NOVO STAND STAT</button>

@@ -241,7 +241,7 @@ function salvarAtual() {
         // Definir os pontos atualizados no atributo "points" do polígono
         poligono.setAttribute("points", pontosAtualizados);
 
-        poligono.setAttribute("fill", 'red');
+        setarCorzinha(poligono);
 
         // RESETA O CHART ATUAL
 
@@ -619,7 +619,6 @@ function abrirChartzinho() {
     var nomeClicado = this.parentElement.parentElement.querySelector("p").innerText;
     document.getElementById("input-nome").value = nomeClicado;
 
-
     var textos = this.parentElement.parentElement.querySelectorAll("text");
 
     var arrayzinho = Array.from(textos).map(function (element) {
@@ -650,6 +649,20 @@ function abrirChartzinho() {
     this.parentElement.parentElement.setAttribute("id", "clicado")
 
     updateRangeValues(arrayzinho)
+
+    ///COLOCA A COR DO CHARTZINHO CLICADO NO INPUT & NO POLIGONO
+
+    var corDoChartzinho = this.parentElement.querySelector("polygon").getAttributeNS(null, "fill");
+
+    document.getElementById("color-picker").value = corDoChartzinho
+    vermelho.setAttributeNS(null, "fill", corDoChartzinho)
+
+    console.log(corDoChartzinho)
+
+    ///COLOCA A IMAGEM DO CHARTZINHO NA PARADA DE INPUT
+
+    var imagemEscolhida = this.parentElement.querySelector(".imagem-salva").getAttribute("src");
+    document.getElementById("input-imagem").setAttribute("src", imagemEscolhida);
 }
 
 function updateRangeValues(noteArray) {
@@ -669,27 +682,35 @@ function updateRangeValues(noteArray) {
 }
 
 function resetarChart() {
+
+    ///RESETA O INPUT DO NOME
     document.getElementById("input-nome").value = '';
 
+    ///RESETA O POLÍGONO
     var vermelho = document.getElementById('vermelhinho');
     var resetChart = getValuesAsString(['C', 'C', 'C', 'C', 'C', 'C']);
     vermelho.setAttribute('points', resetChart);
 
+    ///RESETA AS NOTAS NO CHARTZAO
     var notonas = document.querySelectorAll(".notas");
     for (i = 0; i < 6; i++) {
         notonas[i].innerHTML = 'C';
     }
 
-
+    ///RESETA OS INPUT DOS STATS
     const rangeInputs = document.querySelectorAll('.invisiveis');
 
     rangeInputs.forEach(input => {
-        // Set the desired value for each range input
         input.value = '3'
     });
 
+    ///RESETA A IMAGEM
     var imagemInput = document.getElementById("inputImagem")
     imagemInput.src = "insert.png"
+
+    ///RESETA A COR DO POLÍGONO
+    document.getElementById("color-picker").value = '#ff0000';
+    vermelho.setAttributeNS(null, "fill", "#ff0000")
 }
 
 function atualizarChartzinho(clicadoAnterior) {
@@ -751,9 +772,14 @@ function atualizarChartzinho(clicadoAnterior) {
 
     poligoninho.setAttribute("points", pontinhosAtualizados);
 
+    ///ATUALIZANDO A COR DO POLIGONO
+
+    var valorCor = document.getElementById("color-picker").value;
+    poligoninho.setAttributeNS(null, "fill", valorCor);
+
 
     if (JSON.stringify(notasAntigas) !== JSON.stringify(notasAtualizadas)) {
-        alert("Stand stat salvo!!!");
+        alert("Novos stats salvo!!!");
     }
 }
 
@@ -804,4 +830,22 @@ function handleImageInputChange() {
         // Read the image file as a data URL
         reader.readAsDataURL(files[0]);
     }
+}
+
+/////////// ALTERAR COR EM TEMPO REAL
+
+document.addEventListener('DOMContentLoaded', function () {
+    var input = document.getElementById("color-picker");
+    var poligono = document.getElementById("vermelhinho");
+
+    input.addEventListener('input', function () {
+        poligono.setAttributeNS(null, "fill", input.value);
+    });
+});
+
+///////// ALTERAR COR DO CHART SALVO
+
+function setarCorzinha(poligonoFormado) {
+    var valorCor = document.getElementById("color-picker").value;
+    poligonoFormado.setAttributeNS(null, "fill", valorCor);
 }
