@@ -47,11 +47,9 @@ document.addEventListener('DOMContentLoaded', function () {
             var index = Array.from(event.target.parentNode.children).indexOf(event.target) - 1;
             if (!event.target.classList.contains('mudada')) {
                 event.target.classList.add('mudada')
-                console.log('adicionado')
             }
             else {
                 event.target.classList.remove('mudada')
-                console.log('removido')
             }
 
             switch (event.target.innerHTML) {
@@ -68,7 +66,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (document.getElementById('clicado') != null) {
                         var clicado = document.getElementById('clicado');
                         clicado.querySelectorAll('.notas-salvas')[index].innerHTML = 'S'
-                        console.log(clicado.querySelectorAll('.notas-salvas')[index])
                     }
                     break;
                 case 'F':
@@ -82,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     event.target.innerHTML = '∅';
                     if (document.getElementById('clicado') != null) {
                         var clicado = document.getElementById('clicado');
-                        console.log(clicado.querySelectorAll('.notas-salvas')[index])
                         clicado.querySelectorAll('.notas-salvas')[index].innerHTML = '∅'
 
                     }
@@ -946,6 +942,9 @@ function resetarChart() {
     var notonas = document.querySelectorAll(".notas");
     for (i = 0; i < 6; i++) {
         notonas[i].innerHTML = 'C';
+        if (notonas[i].classList.contains('mudada')) {
+            notonas[i].classList.remove('mudada')
+        }
     }
 
     ///RESETA OS INPUT DOS STATS
@@ -1002,8 +1001,6 @@ function atualizarChartzinho(clicadoAnterior) {
         var notonas = document.querySelectorAll('.notas');
         if (notonas[index].classList.contains('mudada')) {
             var mappedNota = notasMudadas[input];
-            console.log(input)
-
         }
         else {
             var mappedNota = notas[input];
@@ -1188,11 +1185,9 @@ function desestilizarLi(Li) {
     Li.querySelectorAll('*').forEach(function (element) {
         element.style.display = "revert-layer";
     });
-    console.log(chartSalvo.querySelector(".imagem-salva"))
 
 
     if (Li.querySelector(".imagem-salva") != null) {
-        console.log("entrou")
         Li.querySelector(".imagem-salva").style.opacity = "revert-layer";
 
     }
