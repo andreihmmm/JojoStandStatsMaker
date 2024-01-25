@@ -1,4 +1,5 @@
 const notas = ['F', 'E', 'D', 'C', 'B', 'A', 'S'];
+const notasMudadas = ['∅', 'E', 'D', 'C', 'B', 'A', '∞'];
 
 const rangex = [199, 215, 230, 246, 263, 278, 292]
 const rangey = [202, 211, 220, 229, 239, 248, 256]
@@ -36,8 +37,60 @@ const powerySalvo = [98, 88, 80, 70, 61, 53, 44]
 const speedxSalvo = [96, 104, 111, 120, 128, 134, 142]
 const speedySalvo = [98, 93, 89, 84, 79, 75, 71]
 
-const noteMap = { 'F': 0, 'E': 1, 'D': 2, 'C': 3, 'B': 4, 'A': 5, 'S': 6 };
+const noteMap = { '∅': 0, 'F': 0, 'E': 1, 'D': 2, 'C': 3, 'B': 4, 'A': 5, 'S': 6, '∞': 6 };
 const inputMap = { 0: 'F', 1: 'E', 2: 'D', 3: 'C', 4: 'B', 5: 'A', 6: 'S' };
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    document.addEventListener('click', function (event) {
+        if (event.target.classList.contains('notas')) {
+            var index = Array.from(event.target.parentNode.children).indexOf(event.target) - 1;
+            if (!event.target.classList.contains('mudada')) {
+                event.target.classList.add('mudada')
+                console.log('adicionado')
+            }
+            else {
+                event.target.classList.remove('mudada')
+                console.log('removido')
+            }
+
+            switch (event.target.innerHTML) {
+                case 'S':
+                    event.target.innerHTML = '∞';
+                    if (document.getElementById('clicado') != null) {
+                        var clicado = document.getElementById('clicado');
+                        clicado.querySelectorAll('.notas-salvas')[index].innerHTML = '∞'
+                    }
+
+                    break;
+                case '∞':
+                    event.target.innerHTML = 'S';
+                    if (document.getElementById('clicado') != null) {
+                        var clicado = document.getElementById('clicado');
+                        clicado.querySelectorAll('.notas-salvas')[index].innerHTML = 'S'
+                        console.log(clicado.querySelectorAll('.notas-salvas')[index])
+                    }
+                    break;
+                case 'F':
+                    event.target.innerHTML = '∅';
+                    if (document.getElementById('clicado') != null) {
+                        var clicado = document.getElementById('clicado');
+                        clicado.querySelectorAll('.notas-salvas')[index].innerHTML = '∅'
+                    }
+                    break;
+                case 'NONE':
+                    event.target.innerHTML = '∅';
+                    if (document.getElementById('clicado') != null) {
+                        var clicado = document.getElementById('clicado');
+                        console.log(clicado.querySelectorAll('.notas-salvas')[index])
+                        clicado.querySelectorAll('.notas-salvas')[index].innerHTML = '∅'
+
+                    }
+                    break;
+            }
+        }
+    });
+})
 
 function resetarClicado() {
     var clicado = document.getElementById("clicado");
@@ -186,42 +239,73 @@ function salvarAtual() {
 
         var nrange = document.createElementNS("http://www.w3.org/2000/svg", "text");
         nrange.classList.add("notas-salvas")
-        nrange.textContent = notas[input1];
+        if (document.getElementById('nota-range').classList.contains('mudada')) {
+            nrange.textContent = notasMudadas[input1]
+        }
+        else {
+            nrange.textContent = notas[input1];
+        }
         nrange.setAttribute("x", "143");
         nrange.setAttribute("y", "135");
+
         svg.appendChild(nrange);
 
         var ndurability = document.createElementNS("http://www.w3.org/2000/svg", "text");
         ndurability.classList.add("notas-salvas")
-        ndurability.textContent = notas[input2];
+        if (document.getElementById('nota-durability').classList.contains('mudada')) {
+            ndurability.textContent = notasMudadas[input2]
+        }
+        else {
+            ndurability.textContent = notas[input2];
+        }
         ndurability.setAttribute("x", "92");
         ndurability.setAttribute("y", "165");
         svg.appendChild(ndurability);
 
         var nprecision = document.createElementNS("http://www.w3.org/2000/svg", "text");
         nprecision.classList.add("notas-salvas")
-        nprecision.textContent = notas[input3];
+        if (document.getElementById('nota-precision').classList.contains('mudada')) {
+            nprecision.textContent = notasMudadas[input3]
+        }
+        else {
+            nprecision.textContent = notas[input3];
+        }
         nprecision.setAttribute("x", "40");
         nprecision.setAttribute("y", "136");
         svg.appendChild(nprecision);
 
         var npotential = document.createElementNS("http://www.w3.org/2000/svg", "text");
         npotential.classList.add("notas-salvas")
-        npotential.textContent = notas[input4];
+        if (document.getElementById('nota-potential').classList.contains('mudada')) {
+            npotential.textContent = notasMudadas[input4]
+        }
+        else {
+            npotential.textContent = notas[input4];
+        }
         npotential.setAttribute("x", "38");
         npotential.setAttribute("y", "70");
         svg.appendChild(npotential);
 
         var npower = document.createElementNS("http://www.w3.org/2000/svg", "text");
         npower.classList.add("notas-salvas")
-        npower.textContent = notas[input5];
+        if (document.getElementById('nota-power').classList.contains('mudada')) {
+            npower.textContent = notasMudadas[input5]
+        }
+        else {
+            npower.textContent = notas[input5];
+        }
         npower.setAttribute("x", "92");
         npower.setAttribute("y", "42");
         svg.appendChild(npower);
 
         var nspeed = document.createElementNS("http://www.w3.org/2000/svg", "text");
         nspeed.classList.add("notas-salvas")
-        nspeed.textContent = notas[input6];
+        if (document.getElementById('nota-speed').classList.contains('mudada')) {
+            nspeed.textContent = notasMudadas[input6]
+        }
+        else {
+            nspeed.textContent = notas[input6];
+        }
         nspeed.setAttribute("x", "145");
         nspeed.setAttribute("y", "72");
         svg.appendChild(nspeed);
@@ -255,7 +339,6 @@ function salvarAtual() {
     }
 }
 
-
 // RANGE
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -288,8 +371,13 @@ document.addEventListener('DOMContentLoaded', function () {
             // Update the 'points' attribute
             poligoninho.setAttribute('points', valoresAntigos.join(' '));
 
-            // Update the note
-            notinha.textContent = notas[valor];
+            if (notaRangeElement.classList.contains('mudada')) {
+                notinha.textContent = notasMudadas[valor];
+            }
+            else {
+                notinha.textContent = notas[valor];
+            }
+
         }
 
 
@@ -307,7 +395,13 @@ document.addEventListener('DOMContentLoaded', function () {
         vermelho.setAttribute('points', valoresAntigos.join(' '));
 
         // Update the note
-        notaRangeElement.textContent = notas[valor];
+        if (notaRangeElement.classList.contains('mudada')) {
+            notaRangeElement.textContent = notasMudadas[valor];
+        }
+        else {
+            notaRangeElement.textContent = notas[valor];
+
+        }
     }
 
     // Initial update when DOM is loaded
@@ -316,7 +410,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Update points and note whenever the input value changes
     inputElement.addEventListener('input', updatePoints);
 });
-
 
 // DURABILITY
 
@@ -349,7 +442,12 @@ document.addEventListener('DOMContentLoaded', function () {
             poligoninho.setAttribute('points', valoresAntigos.join(' '));
 
             // Update the note
-            notinha.textContent = notas[valor];
+            if (notaDurabilityElement.classList.contains('mudada')) {
+                notinha.textContent = notasMudadas[valor];
+            }
+            else {
+                notinha.textContent = notas[valor];
+            }
         }
 
 
@@ -366,8 +464,12 @@ document.addEventListener('DOMContentLoaded', function () {
         // Update the 'points' attribute
         vermelho.setAttribute('points', valoresAntigos.join(' '));
 
-        // Update the note
-        notaDurabilityElement.textContent = notas[valor];
+        if (notaDurabilityElement.classList.contains('mudada')) {
+            notaDurabilityElement.textContent = notasMudadas[valor];
+        }
+        else {
+            notaDurabilityElement.textContent = notas[valor];
+        }
     }
 
     // Initial update when DOM is loaded
@@ -408,7 +510,12 @@ document.addEventListener('DOMContentLoaded', function () {
             poligoninho.setAttribute('points', valoresAntigos.join(' '));
 
             // Update the note
-            notinha.textContent = notas[valor];
+            if (notaPrecisionElement.classList.contains('mudada')) {
+                notinha.textContent = notasMudadas[valor];
+            }
+            else {
+                notinha.textContent = notas[valor];
+            }
         }
 
         // Your logic to calculate new coordinates
@@ -424,8 +531,13 @@ document.addEventListener('DOMContentLoaded', function () {
         // Update the 'points' attribute
         vermelho.setAttribute('points', valoresAntigos.join(' '));
 
-        // Update the note
-        notaPrecisionElement.textContent = notas[valor];
+
+        if (notaPrecisionElement.classList.contains('mudada')) {
+            notaPrecisionElement.textContent = notasMudadas[valor];
+        }
+        else {
+            notaPrecisionElement.textContent = notas[valor];
+        }
     }
 
     // Initial update when DOM is loaded
@@ -467,7 +579,12 @@ document.addEventListener('DOMContentLoaded', function () {
             poligoninho.setAttribute('points', valoresAntigos.join(' '));
 
             // Update the note
-            notinha.textContent = notas[valor];
+            if (notaPotentialElement.classList.contains('mudada')) {
+                notinha.textContent = notasMudadas[valor];
+            }
+            else {
+                notinha.textContent = notas[valor];
+            }
         }
 
         // Your logic to calculate new coordinates
@@ -483,8 +600,12 @@ document.addEventListener('DOMContentLoaded', function () {
         // Update the 'points' attribute
         vermelho.setAttribute('points', valoresAntigos.join(' '));
 
-        // Update the note
-        notaPotentialElement.textContent = notas[valor];
+        if (notaPotentialElement.classList.contains('mudada')) {
+            notaPotentialElement.textContent = notasMudadas[valor];
+        }
+        else {
+            notaPotentialElement.textContent = notas[valor];
+        }
     }
 
     // Initial update when DOM is loaded
@@ -525,7 +646,12 @@ document.addEventListener('DOMContentLoaded', function () {
             poligoninho.setAttribute('points', valoresAntigos.join(' '));
 
             // Update the note
-            notinha.textContent = notas[valor];
+            if (notaPowerElement.classList.contains('mudada')) {
+                notinha.textContent = notasMudadas[valor];
+            }
+            else {
+                notinha.textContent = notas[valor];
+            }
         }
 
         // Your logic to calculate new coordinates
@@ -541,8 +667,12 @@ document.addEventListener('DOMContentLoaded', function () {
         // Update the 'points' attribute
         vermelho.setAttribute('points', valoresAntigos.join(' '));
 
-        // Update the note
-        notaPowerElement.textContent = notas[valor];
+        if (notaPowerElement.classList.contains('mudada')) {
+            notaPowerElement.textContent = notasMudadas[valor];
+        }
+        else {
+            notaPowerElement.textContent = notas[valor];
+        }
     }
 
     // Initial update when DOM is loaded
@@ -583,7 +713,12 @@ document.addEventListener('DOMContentLoaded', function () {
             poligoninho.setAttribute('points', valoresAntigos.join(' '));
 
             // Update the note
-            notinha.textContent = notas[valor];
+            if (notaSpeedElement.classList.contains('mudada')) {
+                notinha.textContent = notasMudadas[valor];
+            }
+            else {
+                notinha.textContent = notas[valor];
+            }
         }
 
         // Your logic to calculate new coordinates
@@ -599,8 +734,12 @@ document.addEventListener('DOMContentLoaded', function () {
         // Update the 'points' attribute
         vermelho.setAttribute('points', valoresAntigos.join(' '));
 
-        // Update the note
-        notaSpeedElement.textContent = notas[valor];
+        if (notaSpeedElement.classList.contains('mudada')) {
+            notaSpeedElement.textContent = notasMudadas[valor];
+        }
+        else {
+            notaSpeedElement.textContent = notas[valor];
+        }
     }
 
     // Initial update when DOM is loaded
@@ -625,7 +764,13 @@ function getValuesAsString(noteVector) {
         const xValues = eval(`${attributeName}x`);
         const yValues = eval(`${attributeName}y`);
 
-        const noteIndex = notas.indexOf(note.toUpperCase());
+        var letra = document.getElementById(`nota-${attributeName}`)
+        if (letra.classList.contains('mudada')) {
+            var noteIndex = notasMudadas.indexOf(note)
+        }
+        else {
+            var noteIndex = notas.indexOf(note);
+        }
 
         if (noteIndex === -1) {
             console.error(`Invalid note: ${note}`);
@@ -658,8 +803,13 @@ function getValuesAsStringChartzinho(noteVector) {
         const xValues = eval(`${attributeName}xSalvo`);
         const yValues = eval(`${attributeName}ySalvo`);
 
-        const noteIndex = notas.indexOf(note.toUpperCase());
-
+        var letra = document.getElementById(`nota-${attributeName}`)
+        if (letra.classList.contains('mudada')) {
+            var noteIndex = notasMudadas.indexOf(note)
+        }
+        else {
+            var noteIndex = notas.indexOf(note);
+        }
         if (noteIndex === -1) {
             console.error(`Invalid note: ${note}`);
             return null;
@@ -755,9 +905,15 @@ function abrirChartzinho() {
     ///ATUALIZA A COR DO FUNDO
     var body = document.querySelector('body')
     var esquerda = document.querySelector('#esquerda')
+    var inputFundoEsquerda = document.getElementById('fundo-esquerda')
+    var inputFundoBody = document.getElementById('fundo-body')
 
     body.style.backgroundColor = this.parentElement.parentElement.getAttribute('color-body')
     esquerda.style.backgroundColor = this.parentElement.parentElement.getAttribute('color-esquerda')
+
+
+    inputFundoBody.value = this.parentElement.parentElement.getAttribute('color-body')
+    inputFundoEsquerda.value = this.parentElement.parentElement.getAttribute('color-esquerda')
 }
 
 function updateRangeValues(noteArray) {
@@ -842,7 +998,16 @@ function atualizarChartzinho(clicadoAnterior) {
 
     textinhos.forEach((text, index) => {
         var input = inputsAtualizadas[index];
-        var mappedNota = inputMap[input];
+
+        var notonas = document.querySelectorAll('.notas');
+        if (notonas[index].classList.contains('mudada')) {
+            var mappedNota = notasMudadas[input];
+            console.log(input)
+
+        }
+        else {
+            var mappedNota = notas[input];
+        }
         text.textContent = mappedNota;
         notasAtualizadas.push(mappedNota);
     })
@@ -943,7 +1108,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
 
 ///////// ALTERAR COR DO CHART SALVO
 
