@@ -42,15 +42,21 @@ const inputMap = { 0: 'F', 1: 'E', 2: 'D', 3: 'C', 4: 'B', 5: 'A', 6: 'S' };
 
 document.addEventListener('DOMContentLoaded', function () {
 
+    function alteraClasseMudada(evento) {
+        if (!evento.classList.contains('mudada')) {
+            evento.classList.add('mudada')
+        }
+        else {
+            evento.classList.remove('mudada')
+        }
+    }
+
+
     document.addEventListener('click', function (event) {
         if (event.target.classList.contains('notas')) {
             var index = Array.from(event.target.parentNode.children).indexOf(event.target) - 1;
-            if (!event.target.classList.contains('mudada')) {
-                event.target.classList.add('mudada')
-            }
-            else {
-                event.target.classList.remove('mudada')
-            }
+
+            alteraClasseMudada(event.target)
 
             switch (event.target.innerHTML) {
                 case 'S':
@@ -785,44 +791,6 @@ function getValuesAsString(noteVector) {
     return resultString;
 }
 
-function getValuesAsStringChartzinho(noteVector) {
-    const attributes = ["Range", "Durability", "Precision", "Potential", "Power", "Speed"];
-    let resultString = "";
-
-    if (noteVector.length !== 6) {
-        console.error("Invalid vector length");
-        return null;
-    }
-
-    noteVector.forEach((note, index) => {
-        const attributeName = attributes[index].toLowerCase();
-        const xValues = eval(`${attributeName}xSalvo`);
-        const yValues = eval(`${attributeName}ySalvo`);
-
-        var letra = document.getElementById(`nota-${attributeName}`)
-        if (letra.classList.contains('mudada')) {
-            var noteIndex = notasMudadas.indexOf(note)
-        }
-        else {
-            var noteIndex = notas.indexOf(note);
-        }
-        if (noteIndex === -1) {
-            console.error(`Invalid note: ${note}`);
-            return null;
-        }
-
-        const x = xValues[noteIndex];
-        const y = yValues[noteIndex];
-
-        resultString += `${x},${y} `;
-    });
-
-    // Remove trailing space
-    resultString = resultString.trim();
-
-    return resultString;
-}
-
 function pegarInputsChart() {
     const rangeInputs = document.querySelectorAll('.invisiveis');
     const resultado = [];
@@ -857,9 +825,21 @@ function abrirChartzinho() {
 
     var notonas = document.querySelectorAll(".notas");
 
+    arrayzinho.forEach((elemento, index) => {
+        console.log(elemento)
+        if (elemento == '∞' || elemento == '∅') {
+            notonas[index].classList.add('mudada')
+        }
+        else if (elemento == 'S' || elemento == 'F') {
+            notonas[index].classList.remove('mudada')
+        }
+    });
+
     var arrayzao = Array.from(notonas).map(function (element) {
         return element.innerHTML;
     });
+
+
 
 
     for (i = 0; i < 6; i++) {
