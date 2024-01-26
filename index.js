@@ -81,11 +81,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         clicado.querySelectorAll('.notas-salvas')[index].innerHTML = '∅'
                     }
                     break;
-                case 'NONE':
-                    event.target.innerHTML = '∅';
+                case '∅':
+                    event.target.innerHTML = 'F';
                     if (document.getElementById('clicado') != null) {
                         var clicado = document.getElementById('clicado');
-                        clicado.querySelectorAll('.notas-salvas')[index].innerHTML = '∅'
+                        clicado.querySelectorAll('.notas-salvas')[index].innerHTML = 'F'
 
                     }
                     break;
