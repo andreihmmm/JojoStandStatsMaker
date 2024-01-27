@@ -826,7 +826,6 @@ function abrirChartzinho() {
     var notonas = document.querySelectorAll(".notas");
 
     arrayzinho.forEach((elemento, index) => {
-        console.log(elemento)
         if (elemento == '∞' || elemento == '∅') {
             notonas[index].classList.add('mudada')
         }
