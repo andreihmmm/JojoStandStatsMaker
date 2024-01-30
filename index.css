@@ -515,8 +515,7 @@ svg#meio {
 
 /* For WebKit browsers (Chrome, Safari) */
 ::-webkit-scrollbar {
-    width: 6px;
-    direction: rtl;
+    display: none;
 }
 
 ::-webkit-scrollbar-thumb {
