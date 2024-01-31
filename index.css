@@ -81,18 +81,7 @@ li.salvo {
     height: 70px;
 }
 
-li.salvo:hover {
-    height: 200px;
-}
 
-li.salvo:hover .chart-salvo {
-    height: 200px;
-    border-radius: 50%
-}
-
-li.salvo:hover .imagem-salva {
-    opacity: 0;
-}
 
 
 .chart-salvo {
@@ -136,6 +125,12 @@ a p {
 
 }
 
+
+.chart-salvo * {
+    display: none;
+}
+
+
 .img-salvos {
     max-width: 195px;
     position: absolute;
@@ -150,9 +145,17 @@ li.salvo:hover .chart-salvo+.imagem-salva {
     opacity: 0;
 }
 
+li.salvo:hover {
+    height: 200px;
+}
 
-.chart-salvo * {
-    display: none;
+li.salvo:hover .chart-salvo {
+    height: 200px;
+    border-radius: 50%
+}
+
+li.salvo:hover .imagem-salva {
+    opacity: 0;
 }
 
 li.salvo:hover .chart-salvo * {
@@ -166,6 +169,44 @@ li.salvo:hover .chart-salvo text {
 li.salvo:hover .chart-salvo h5 {
     display: block;
 }
+
+/* PRA USAR NO JS */
+
+li.salvo-hover .chart-salvo {
+    opacity: 1;
+    height: 100%;
+}
+
+li.salvo-hover .chart-salvo+.imagem-salva {
+    opacity: 0;
+}
+
+li.salvo-hover {
+    height: 200px;
+}
+
+li.salvo-hover .chart-salvo {
+    height: 200px;
+    border-radius: 50%
+}
+
+li.salvo-hover .imagem-salva {
+    opacity: 0;
+}
+
+li.salvo-hover .chart-salvo * {
+    display: flex;
+}
+
+li.salvo-hover .chart-salvo text {
+    display: block;
+}
+
+li.salvo-hover .chart-salvo h5 {
+    display: block;
+}
+
+/* fimmmmmmmmmmm */
 
 .a-chartzinho {
     width: 195px;

@@ -42,6 +42,20 @@ const inputMap = { 0: 'F', 1: 'E', 2: 'D', 3: 'C', 4: 'B', 5: 'A', 6: 'S' };
 
 document.addEventListener('DOMContentLoaded', function () {
 
+    // Select all input elements of type "range"
+    var rangeInputszinhos = document.querySelectorAll('input[type="range"]');
+
+    // Add event listeners to each range input element
+    rangeInputszinhos.forEach(function (input) {
+        input.addEventListener('keydown', function (event) {
+            // Check if the pressed key is an arrow key
+            if (event.key.startsWith('Arrow')) {
+                // Prevent the default behavior of arrow keys
+                event.preventDefault();
+            }
+        });
+    });
+
     function alteraClasseMudada(evento) {
         if (!evento.classList.contains('mudada')) {
             evento.classList.add('mudada')
@@ -101,6 +115,10 @@ function resetarClicado() {
         atualizarChartzinho(clicado);
         clicado.setAttribute("id", '');
         resetarChart();
+    }
+
+    if (document.querySelector('.salvo-hover') != null) {
+        document.querySelector('.salvo-hover').classList.remove('salvo-hover');
     }
 }
 
@@ -813,7 +831,6 @@ function abrirChartzinho() {
     }
 
     // COLOCA O NOME DO CHARTZINHO CLICADO NO INPUT
-    console.log(this)
 
     var nomeClicado = this.parentElement.parentElement.querySelector("p").innerText;
     document.getElementById("input-nome").value = nomeClicado;
@@ -890,6 +907,12 @@ function abrirChartzinho() {
 
     inputFundoBody.value = this.parentElement.parentElement.getAttribute('color-body')
     inputFundoEsquerda.value = this.parentElement.parentElement.getAttribute('color-esquerda')
+
+    ///////// retira o ultimo salvo-hover
+
+    if (document.querySelector('.salvo-hover') != null) {
+        document.querySelector('.salvo-hover').classList.remove('salvo-hover')
+    }
 }
 
 function updateRangeValues(noteArray) {
@@ -1178,31 +1201,51 @@ document.addEventListener('keydown', function (event) {
     var clicadoAnterior = document.getElementById('clicado')
 
     if (clicadoAnterior != null) {
-        var index = lista.indexOf(clicadoAnterior);
+
+        var ultimoHover = document.querySelector('.salvo-hover');
+        if (ultimoHover == null) {
+            var index = lista.indexOf(clicadoAnterior);
+        }
+        else {
+            var index = lista.indexOf(ultimoHover);
+        }
+
+
 
         if (event.key === 'ArrowUp') {
             // Arrow Up key is pressed
             // Your code here for Arrow Up action
             if (index > 0) {
-                var imagemProxima = lista[index - 1].querySelector('.img-salvos');
-                imagemProxima.click();
+                lista[index - 1].classList.add('salvo-hover')
             }
             else {
                 alert('Ultimo chartzinho')
             }
 
 
-        } else if (event.key === 'ArrowDown') {
+        }
+        else if (event.key === 'ArrowDown') {
             // Arrow Down key is pressed
             // Your code here for Arrow Down action
             if (index < lista.length - 1) {
-                var imagemProxima = lista[index + 1].querySelector('.img-salvos');
-                imagemProxima.click();
+                lista[index + 1].classList.add('salvo-hover')
             }
             else {
                 alert('Ultimo chartzinho')
             }
         }
-    }
 
+        else if (event.key === 'Enter' && document.querySelector('.salvo-hover') != null) {
+            // Your code to be executed when Enter key is pressed
+            document.querySelector('.salvo-hover').querySelector('.img-salvos').click();
+
+            console.log('Enter key pressed');
+        }
+
+        if (document.querySelectorAll('.salvo-hover').length > 1) {
+            ultimoHover.classList.remove('salvo-hover')
+        }
+    }
 });
+
+
