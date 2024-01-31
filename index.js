@@ -813,6 +813,7 @@ function abrirChartzinho() {
     }
 
     // COLOCA O NOME DO CHARTZINHO CLICADO NO INPUT
+    console.log(this)
 
     var nomeClicado = this.parentElement.parentElement.querySelector("p").innerText;
     document.getElementById("input-nome").value = nomeClicado;
@@ -1171,3 +1172,37 @@ function desestilizarLi(Li) {
 
     }
 }
+
+document.addEventListener('keydown', function (event) {
+    var lista = Array.from(document.querySelector('ul').children)
+    var clicadoAnterior = document.getElementById('clicado')
+
+    if (clicadoAnterior != null) {
+        var index = lista.indexOf(clicadoAnterior);
+
+        if (event.key === 'ArrowUp') {
+            // Arrow Up key is pressed
+            // Your code here for Arrow Up action
+            if (index > 0) {
+                var imagemProxima = lista[index - 1].querySelector('.img-salvos');
+                imagemProxima.click();
+            }
+            else {
+                alert('Ultimo chartzinho')
+            }
+
+
+        } else if (event.key === 'ArrowDown') {
+            // Arrow Down key is pressed
+            // Your code here for Arrow Down action
+            if (index < lista.length - 1) {
+                var imagemProxima = lista[index + 1].querySelector('.img-salvos');
+                imagemProxima.click();
+            }
+            else {
+                alert('Ultimo chartzinho')
+            }
+        }
+    }
+
+});
