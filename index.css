@@ -114,7 +114,7 @@ li.salvo:hover .imagem-salva {
     transition: 0.5s;
 }
 
-.imagemLixeira:hover {
+li.salvo:hover .imagemLixeira:hover {
     height: 25px;
     width: 25px;
 }
@@ -141,28 +141,29 @@ a p {
     position: absolute;
 }
 
-.chart-salvo:hover {
+li.salvo:hover .chart-salvo {
     opacity: 1;
     height: 100%;
 }
 
-.chart-salvo:hover+.imagem-salva {
+li.salvo:hover .chart-salvo+.imagem-salva {
     opacity: 0;
 }
+
 
 .chart-salvo * {
     display: none;
 }
 
-.chart-salvo:hover * {
+li.salvo:hover .chart-salvo * {
     display: flex;
 }
 
-.chart-salvo:hover text {
+li.salvo:hover .chart-salvo text {
     display: block;
 }
 
-.chart-salvo:hover h5 {
+li.salvo:hover .chart-salvo h5 {
     display: block;
 }
 
